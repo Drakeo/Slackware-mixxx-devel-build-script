@@ -1,0 +1,23 @@
+You must be root
+ run sh mixxx-build.sh
+ you need jdk development or open jdk 
+ 
+ you may set your scritp to build for your cpu edit the 
+  /buildmixxx/mixxx/mixxx.SlackBuild
+
+ #  1  single-core (P-III and below)
+#  2  P4
+#  3  Intel Core
+#  4  Core 2
+#  5  Athlon-4/XP/MP
+#  6  K8/Opteron/AMD64
+#  7  K8/Opteron/AMD64 w/ SSE3  my default
+#
+OPTIMIZE=${OPTIMIZE:-" optimize=7 "} select your number default is 7
+
+
+# number of jobs set to your cpu cores
+NUMJOBS=${NUMJOBS:-" -j8 "} select the amount of cores you have. default is 8 
+
+
+ 
