@@ -92,16 +92,14 @@ find . \
 patch -p0 < $CWD/desktop.diff
 
 # it seems libshout isn't detected :(
-CFLAGS="$SLKCFLAGS" \
-QTDIR=/usr/lib$LIBDIRSUFFIX/ \
-LIBIR=/usr/lib$LIBDIRSUFFIX/ \
+  CFLAGS="$SLKCFLAGS" \
+  QTDIR=/usr/lib$LIBDIRSUFFIX/ \
+  LIBIR=/usr/lib$LIBDIRSUFFIX \
 scons  $NUMJOBS $OPTIMIZE \
-
   faad=1 \
   prefix=/usr \
-LIBIR=/usr/lib$LIBDIRSUFFIX \
-QTDIR=/usr/lib$LIBDIRSUFFIX/ \
-scons $NUMJOBS $OPTIMIZE \
+  LIBIR=/usr/lib$LIBDIRSUFFIX \
+  QTDIR=/usr/lib$LIBDIRSUFFIX \
   install_root=$PKG/usr \
   prefix=/usr \
   install
@@ -115,6 +113,12 @@ cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 cat $CWD/doinst.sh > $PKG/install/doinst.sh
+
+#put the library in the right arch tree.use this hack till I  figure it out. 
+# mixxx will find it's libraries when moved to /usr/lib64.
+if [ "$ARCH" = "x86_64" ]; then
+  mv $PKG/usr/lib/ $PKG/usr/lib$LIBDIRSUFFIX
+fi
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
