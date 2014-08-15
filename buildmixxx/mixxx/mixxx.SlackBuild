@@ -24,12 +24,13 @@
 
 PRGNAM=mixxx
 VERSION=${VERSION:-1.12.dev}
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-2b}
 TAG=${TAG:-_DRKo}
 
 git clone https://github.com/mixxxdj/mixxx
 mv mixxx/ mixxx-1.12.dev
 tar cvf  mixxx-1.12.dev.tar.gz mixxx-1.12.dev/
+sleep 3
 rm -rf mixxx-1.12.dev
 # number of jobs set to your cpu cores
 NUMJOBS=${NUMJOBS:-" -j8 "}
