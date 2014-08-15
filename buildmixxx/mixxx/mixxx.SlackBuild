@@ -27,11 +27,9 @@ VERSION=${VERSION:-1.12.dev}
 BUILD=${BUILD:-2}
 TAG=${TAG:-_DRKo}
 
-wget -c https://github.com/mixxxdj/mixxx/archive/master.zip
-unzip master.zip
-mv mixxx-master/ mixxx-1.12.dev
+git clone https://github.com/mixxxdj/mixxx
+mv mixxx/ mixxx-1.12.dev
 tar cvf  mixxx-1.12.dev.tar.gz mixxx-1.12.dev/
-rm -rf mixxx-master
 rm -rf mixxx-1.12.dev
 # number of jobs set to your cpu cores
 NUMJOBS=${NUMJOBS:-" -j8 "}
@@ -122,3 +120,6 @@ fi
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+
+rm $CWD/$PRGNAM-$VERSION.tar.gz
+
