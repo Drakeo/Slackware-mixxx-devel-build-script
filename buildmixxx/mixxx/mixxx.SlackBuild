@@ -24,14 +24,9 @@
 
 PRGNAM=mixxx
 VERSION=${VERSION:-1.12.dev}
-BUILD=${BUILD:-2b}
+BUILD=${BUILD:-2c}
 TAG=${TAG:-_DRKo}
 
-git clone https://github.com/mixxxdj/mixxx
-mv mixxx/ mixxx-1.12.dev
-tar cvf  mixxx-1.12.dev.tar.gz mixxx-1.12.dev/
-sleep 3
-rm -rf mixxx-1.12.dev
 # number of jobs set to your cpu cores
 NUMJOBS=${NUMJOBS:-" -j8 "}
 #SELECT YOUR TYPE OF CPU 
@@ -58,6 +53,22 @@ TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
+
+if [ -d $CWD/$PRGNAM ]
+then
+cd $CWD/$PRGNAM
+  git pull
+else
+  git clone https://github.com/mixxxdj/mixxx.git
+fi
+
+cd $CWD
+
+cp -rf mixxx/ mixxx-1.12.dev
+tar cvf  mixxx-1.12.dev.tar.gz mixxx-1.12.dev/
+sleep 3
+rm -rf mixxx-1.12.dev
+
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"
   LIBDIRSUFFIX=""
@@ -79,6 +90,8 @@ mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
 tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+sleep 3
+rm $CWD/$PRGNAM-$VERSION.tar.gz # want to make sure a fresh tarball everytime.
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find . \
@@ -119,8 +132,10 @@ if [ "$ARCH" = "x86_64" ]; then
   mv $PKG/usr/lib/ $PKG/usr/lib$LIBDIRSUFFIX
 fi
 
+ # Get the version
+ REV=$(cat /tmp/SBo/mixxx-1.12.dev/src/build.h | head -n 2 | tail -1 | cut -c20-23)
+  
 cd $PKG
-/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$REV-$BUILD-$TAG.${PKGTYPE:-tgz}
 
-rm $CWD/$PRGNAM-$VERSION.tar.gz
 
