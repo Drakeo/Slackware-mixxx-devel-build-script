@@ -24,7 +24,7 @@
 
 PRGNAM=mixxx
 VERSION=${VERSION:-1.12.dev}
-BUILD=${BUILD:-2c}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_DRKo}
 
 # number of jobs set to your cpu cores
@@ -136,6 +136,6 @@ fi
  REV=$(cat /tmp/SBo/mixxx-1.12.dev/src/build.h | head -n 2 | tail -1 | cut -c20-23)
   
 cd $PKG
-/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$REV-$BUILD-$TAG.${PKGTYPE:-tgz}
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$REV$TAG-$BUILD.${PKGTYPE:-tgz}
 
 
