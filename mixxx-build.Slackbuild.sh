@@ -37,6 +37,7 @@ MIXXXROOT=$(pwd)
 
 # Loop for all packages
 for dir in \
+  buildmixxx/set_rlimits \
   buildmixxx/opus \
   buildmixxx/faad2 \
   buildmixxx/libmp4v2 \
