@@ -38,7 +38,7 @@ NUMJOBS=${NUMJOBS:-" -j8 "}
 #  6  K8/Opteron/AMD64
 #  7  K8/Opteron/AMD64 w/ SSE3  my default
 #
-OPTIMIZE=${OPTIMIZE:-" optimize=7 "}
+OPTIMIZE=${OPTIMIZE:-" optimize=6 "}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -125,6 +125,10 @@ cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 cat $CWD/doinst.sh > $PKG/install/doinst.sh
+
+#since the build uses our vamp plugins we need to move libmixxxminimal.so to it.
+mkdir -p $PKG/usr/lib/vamp
+mv  $PKG/usr/lib/mixxx/plugins/vamp/libmixxxminimal.so $PKG/usr/lib/vamp
 
 #put the library in the right arch tree.use this hack till I  figure it out. 
 # mixxx will find it's libraries when moved to /usr/lib64.
