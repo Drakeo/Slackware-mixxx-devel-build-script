@@ -1,0 +1,63 @@
+ok with my build we build with slackbuilds vamp plugins
+and we need to make sure the /usr/lib(Arch)/mixxx/plugin/libmixxxminimal.so is in 
+ /usr/lib(Arch)/vamp/libmixxxminimal.so My build does that  but Slackbuilds may not.
+
+ Things to do as root for root or any user. 
+ setting up set_rlimits here is my config.
+ I run Mixxx as root 99 percent of the time. 
+ this is me and the system is built for one thing real time.
+ 
+ 
+# Configuration file for set_rlimits.  Format is:
+#
+#   name   program   max_nice_priority  max_realtime_priority
+# or
+#   name   program   <key>=<value> ...
+#
+# name is expected to be a username, a groupname if preceeded by a @ sign,
+# or ALL (which matches all users).  Negative priorities effectively
+# disallow any setting of the respective priority for the matching entry. 
+# <key> can be rtprio, nice or memlock.
+# Example entry:
+#
+#   mark  /usr/local/bin/jackd  -1  80
+#
+# Here, user mark can execute /usr/local/bin/jackd using set_rlimits to set
+# a realtime priority up to and including 80, but setting of a nice priority
+# through set_rlimits is disallowed.  Alternatively, if an `audio' group
+# existed, the entry
+#
+#   @audio  /usr/local/bin/jackd  -1  80
+#
+# would allow the same except the permission would extend to all members of
+# the `audio' group.  The same effect could be achieved with the key/value
+# syntax:
+#
+#   @audio  /usr/local/bin/jackd  nice=-1  rtprio=80
+#
+# For more details on the format and use of this file please refer to
+# the set_rlimits manual page.
+ root /usr/bin/mixxx  soft rtprio 99 
+ 
+ ok now lets fix the problem with wavy choppy voice it is a acapi proble.
+ 
+and can be found in mixxx trouble shoot wiki. http://www.mixxx.org/wiki/doku.php/troubleshooting?s[]=limits
+
+Disable CPU Frequency Scaling or use the 'Performance' mode.
+CPU Frequency Scaling is a main cause of Mixxx skipping on laptops.
+(Do ps aux | grep cpufreq and kill any processes you find.) 
+
+Actually it is better to remove the kernel modules, do `lsmod | grep freq` 
+and then remove each of the modules using rmmod, note that if you are using
+a notebook it will burn through battery much quicker when doing this. 
+
+so I made a start up script named mixxxstart and put it in my /usr/local/bin
+
+#!/bin/sh
+# script to stop the cpu scaling it messes with mixxx
+rmmod acpi_cpufreq
+mixxx
+
+this solved my huge issue with the slackware 14.1 
+
+ 
