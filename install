@@ -9,8 +9,8 @@ You must be root
 #  2  P4
 #  3  Intel Core
 #  4  Core 2
-#  5  Athlon-4/XP/MP
-#  6  K8/Opteron/AMD64
+#  5  Athlon-4/XP/MP                          For x86 build must be 5 or under.
+#  6  K8/Opteron/AMD64                        For x86_64 6 or 7  or it will not build
 #  7  K8/Opteron/AMD64 w/ SSE3  my default
 #
 OPTIMIZE=${OPTIMIZE:-" optimize=7 "} select your number default is 7
