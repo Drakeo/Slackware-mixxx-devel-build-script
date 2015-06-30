@@ -27,6 +27,28 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # Set to 1 if you'd like to install/upgrade package as they are built.
 # This is recommended.
+
+#We need jdk development look for openjdk or jdk this is needed to build portmidi
+ if [ -f  /etc/profile.d/openjdk.sh ]; then
+     JAVA="openjdk.sh"   
+ fi
+ 
+ if [ -f  /etc/profile.d/jdk.sh ]; then
+     JAVA="jdk.sh"
+ fi
+     
+ if [ -f  /etc/profile.d/$JAVA ]; then
+       . /etc/profile.d/$JAVA
+ else
+  echo -e "\e[1;33m you must install JDK or openjdk.\e[0m"   
+  echo -e "\e[1;33m http://www.slackware.com/~alien/slackbuilds/openjdk .\e[0m" 
+   exit 1
+fi
+  
+
+
+
+
 INST=1
 
 # This is where all the compilation and final results will be placed

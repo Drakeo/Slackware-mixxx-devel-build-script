@@ -1,5 +1,5 @@
 --- src/mixxx.desktop	2010-12-06 00:07:57.000000000 +0100
-+++ src/mixxx.desktop.new	2011-01-21 17:51:19.000000000 +0100
++++ src/mixxx.desktop.new	2015-06-29 17:51:19.000000000 +0100
 @@ -3,9 +3,9 @@
  Name=Mixxx
  GenericName=Digital DJ interface

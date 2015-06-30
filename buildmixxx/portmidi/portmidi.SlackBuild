@@ -37,6 +37,8 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
+wget -c http://downloads.sourceforge.net/portmedia/portmidi-src-217.zip
+
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
