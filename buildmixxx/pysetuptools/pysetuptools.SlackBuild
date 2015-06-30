@@ -21,7 +21,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=pysetuptools
-VERSION=${VERSION:-3.6}
+VERSION=${VERSION:-17.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://pypi.python.org/packages/source/s/setuptools/setuptools-3.6.tar.gz
+wget -c https://pypi.python.org/packages/source/s/setuptools/setuptools-17.0.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}

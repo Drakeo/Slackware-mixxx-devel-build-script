@@ -42,7 +42,12 @@ for dir in \
   buildmixxx/opus \
   buildmixxx/faad2 \
   buildmixxx/libmp4v2 \
+  buildmixxx/id3lib \
+  buildmixxx/pytz \
   buildmixxx/pysetuptools \
+  buildmixxx/python-gflags \
+  buildmixxx/six \
+  buildmixxx/python-dateutil\
   buildmixxx/speex \
   buildmixxx/scons \
   buildmixxx/jack-audio-connection-kit \

@@ -5,7 +5,7 @@
 # Updated by Andrzej Telszewski <atelszewski@gmail.com>
 
 PRGNAM=scons
-VERSION=${VERSION:-2.3.1}
+VERSION=${VERSION:-2.3.4}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -17,7 +17,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://downloads.sourceforge.net/scons/scons-2.3.1.tar.gz
+wget -c http://downloads.sourceforge.net/scons/scons-2.3.4.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}

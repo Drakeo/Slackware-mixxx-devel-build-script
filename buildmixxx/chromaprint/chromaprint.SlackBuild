@@ -22,7 +22,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=chromaprint
-VERSION=${VERSION:-1.1}
+VERSION=${VERSION:-1.2}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -34,7 +34,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://bitbucket.org/acoustid/chromaprint/downloads/chromaprint-1.1.tar.gz
+wget -c https://bitbucket.org/acoustid/chromaprint/downloads/chromaprint-1.2.tar.gz
 
 NUMJOBS=${NUMJOBS:-" -j8 "}
 
@@ -66,7 +66,7 @@ else
   tools="OFF" ; avfft="OFF" ; fftw3="ON"
 fi
 
-DOCS="COPYING.txt NEWS.txt README.txt"
+DOCS="COPYING.txt NEWS.txt README.md"
 
 set -e
 

@@ -4,7 +4,7 @@
  Name=Mixxx
  GenericName=Digital DJ interface
  Comment=A digital DJ interface
--Exec=pasuspender mixxx
+-Exec=pasuspender mixxx || mixxx
 +Exec=mixxx
  Terminal=false
  Icon=mixxx-icon

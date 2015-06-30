@@ -38,7 +38,7 @@ NUMJOBS=${NUMJOBS:-" -j8 "}
 #  6  K8/Opteron/AMD64
 #  7  K8/Opteron/AMD64 w/ SSE3  my default
 #
-OPTIMIZE=${OPTIMIZE:-" optimize=5 "}
+OPTIMIZE=${OPTIMIZE:-" optimize=7 "}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
