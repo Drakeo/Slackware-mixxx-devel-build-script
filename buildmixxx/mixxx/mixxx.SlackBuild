@@ -23,7 +23,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=mixxx
-VERSION=${VERSION:-1.12.dev}
+VERSION=${VERSION:-2.1.dev}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_DRKo}
 
@@ -64,10 +64,10 @@ fi
 
 cd $CWD
 
-cp -rf mixxx/ mixxx-1.12.dev
-tar cvf  mixxx-1.12.dev.tar.gz mixxx-1.12.dev/
+cp -rf mixxx/ mixxx-2.1.dev
+tar cvf  mixxx-2.1.dev.tar.gz mixxx-2.1.dev/
 sleep 3
-rm -rf mixxx-1.12.dev
+rm -rf mixxx-2.1.dev
 
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"
