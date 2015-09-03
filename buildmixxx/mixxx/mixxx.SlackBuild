@@ -137,7 +137,7 @@ if [ "$ARCH" = "x86_64" ]; then
 fi
 
  # Get the version
- REV=$(cat /tmp/SBo/mixxx-1.12.dev/src/build.h | head -n 2 | tail -1 | cut -c20-23)
+ REV=$(cat /tmp/SBo/mixxx-2.1.dev/src/build.h | head -n 2 | tail -1 | cut -c20-23)
   
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$REV$TAG-$BUILD.${PKGTYPE:-tgz}
