@@ -1,3 +1,5 @@
+Must install ffmpeg and jdk or open-jdk 
+
 ok with my build we build with slackbuilds vamp plugins
 and we need to make sure the /usr/lib(Arch)/mixxx/plugin/libmixxxminimal.so is in 
  /usr/lib(Arch)/vamp/libmixxxminimal.so My build does that  but Slackbuilds may not.
