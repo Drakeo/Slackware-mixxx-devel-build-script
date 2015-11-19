@@ -45,9 +45,14 @@
    exit 1
 fi
   
-
-
-
+ if [ -f /var/log/packages/ffmpeg-* ]; then
+     FFMPG="ffmpeg-*" 
+ else
+   echo -e "\e[1;33m you must install ffmpeg.\e[0m"   
+  echo -e "\e[1;33m http://www.slackware.com/~alien/slackbuilds/ffmpeg .\e[0m" 
+  exit 1
+ fi
+  
 
 INST=1
 
