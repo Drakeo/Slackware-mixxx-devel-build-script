@@ -30,7 +30,7 @@ VERSION=${VERSION:-1.13}
 BUILD=${BUILD:-4}
 TAG=${TAG:-_DRKo}
 
-wget -c "http://www.ladspa.org/download/ladspa_sdk_1.13.tgz"
+wget --no-check-certificate -c "http://pkgs.fedoraproject.org/repo/pkgs/ladspa/ladspa_sdk_1.13.tgz/671be3e1021d0722cadc7fb27054628e/ladspa_sdk_1.13.tgz"
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
