@@ -1,6 +1,8 @@
 You must be root
  run sh mixxx-build.sh
  you need jdk development or open jdk 
+ and you need ffmpeg 
+ everything else is here. 
  
  you may set your scritp to build for your cpu edit the 
   /buildmixxx/mixxx/mixxx.SlackBuild
@@ -9,15 +11,15 @@ You must be root
 #  2  P4
 #  3  Intel Core
 #  4  Core 2
-#  5  Athlon-4/XP/MP                          For x86 build must be 5 or under.
-#  6  K8/Opteron/AMD64                        For x86_64 6 or 7  or it will not build
+#  5  Athlon-4/XP/MP                          For x86 build must be 5 or under. or set to native.
+#  6  K8/Opteron/AMD64                        For x86_64 6 or 7  or it will not build  or set to native. 
 #  7  K8/Opteron/AMD64 w/ SSE3  my default
-#
-OPTIMIZE=${OPTIMIZE:-" optimize=7 "} select your number default is 7
+#  native
+OPTIMIZE=${OPTIMIZE:-" optimize=native "} select your number default is native 
 
 
 # number of jobs set to your cpu cores
-NUMJOBS=${NUMJOBS:-" -j8 "} select the amount of cores you have. default is 8 
+NPROC=$(nproc) and -j$NPROC  automatically sets the build stack to the amount of cpu cores.
+this allows for the fastest build time. mabe some day slackbuilds will pick this up.
 
-
- 
+you will need to rubuild slackware pulseaudio for jack2. 
