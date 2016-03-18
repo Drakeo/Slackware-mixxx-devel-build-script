@@ -19,7 +19,7 @@ fi
 
 wget -c http://code.breakfastquay.com/attachments/download/34/rubberband-1.8.1.tar.bz2
 
-NUMJOBS=${NUMJOBS:-" -j8 "}
+NPROC=$(nproc)
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
@@ -65,7 +65,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
   --build=$ARCH-slackware-linux
 
-make $NUMJOBS || make
+make -j$NPROC || make
 make install DESTDIR=$PKG
 
 find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \

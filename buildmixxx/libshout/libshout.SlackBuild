@@ -13,7 +13,7 @@ TAG=${TAG:-_DRKo}
 
 wget -c "http://downloads.xiph.org/releases/libshout/libshout-2.3.1.tar.gz"
 
-NUMJOBS=${NUMJOBS:-" -j8 "}
+NPROC=$(nproc)
 
 
 # Automatically determine the architecture we're building on:
@@ -68,7 +68,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --mandir=/usr/man \
   --build=$ARCH-slackware-linux
 
-make $NUMJOBS docdir=/usr/doc/$PRGNAM-$VERSION
+make -j$NPROC docdir=/usr/doc/$PRGNAM-$VERSION
 make install docdir=/usr/doc/$PRGNAM-$VERSION DESTDIR=$PKG
 
 find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \

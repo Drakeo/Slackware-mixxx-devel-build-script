@@ -64,7 +64,6 @@ MIXXXROOT=$(pwd)
 
 # Loop for all packages
 for dir in \
-  buildmixxx/taglib \
   buildmixxx/set_rlimits \
   buildmixxx/opus \
   buildmixxx/faad2 \
@@ -76,8 +75,7 @@ for dir in \
   buildmixxx/six \
   buildmixxx/python-dateutil\
   buildmixxx/speex \
-  buildmixxx/scons \
-  buildmixxx/jack-audio-connection-kit \
+  buildmixxx/jack2 \
   buildmixxx/lame \
   buildmixxx/protobuf \
   buildmixxx/chromaprint \

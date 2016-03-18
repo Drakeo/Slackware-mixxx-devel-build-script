@@ -28,7 +28,7 @@ BUILD=${BUILD:-1}
 TAG=${TAG:-_DRKo}
 
 # number of jobs set to your cpu cores
-NUMJOBS=${NUMJOBS:-" -j8 "}
+NPROC=$(nproc)
 #SELECT YOUR TYPE OF CPU 
 #  1  single-core (P-III and below)
 #  2  P4
@@ -38,7 +38,7 @@ NUMJOBS=${NUMJOBS:-" -j8 "}
 #  6  K8/Opteron/AMD64
 #  7  K8/Opteron/AMD64 w/ SSE3  my default
 #
-OPTIMIZE=${OPTIMIZE:-" optimize=0 "}
+OPTIMIZE=${OPTIMIZE:-" optimize=native "}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -107,7 +107,7 @@ patch -p0 < $CWD/desktop.diff
   CFLAGS="$SLKCFLAGS" \
   QTDIR=/usr/lib$LIBDIRSUFFIX/ \
   LIBIR=/usr/lib$LIBDIRSUFFIX \
-scons  $NUMJOBS $OPTIMIZE \
+scons  -j$NPROC $OPTIMIZE \
   faad=1 \
   prefix=/usr \
   LIBIR=/usr/lib$LIBDIRSUFFIX \

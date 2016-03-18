@@ -36,7 +36,7 @@ fi
 
 wget --no-check-certificate -c https://pkgs.fedoraproject.org/repo/pkgs/chromaprint/chromaprint-1.2.tar.gz/748da044a8f0ee5f31edec8b67045b3e/chromaprint-1.2.tar.gz
 
-NUMJOBS=${NUMJOBS:-" -j8 "}
+NPROC=$(nproc)
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
@@ -95,7 +95,7 @@ cd build
     -DBUILD_TOOLS="$tools" \
     -DBUILD_EXAMPLES="ON" \
     -DCMAKE_BUILD_TYPE=Release ..
-make $NUMJOBS || make
+make -j$NPROC || make
 make install DESTDIR=$PKG
 cd ..
 

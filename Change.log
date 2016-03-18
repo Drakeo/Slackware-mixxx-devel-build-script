@@ -1,0 +1,27 @@
+
+        modified:compile jobs per cpu cores   chromaprint/chromaprint.SlackBuild
+        modified:compile jobs per cpu cores   faad2/faad2.SlackBuild
+        modified:compile jobs per cpu cores   id3lib/id3lib.SlackBuild
+        deleted:Use Jack2 instead:    jack-audio-connection-kit/README
+        deleted:Use Jack2 instead:    jack-audio-connection-kit/jack-audio-connection-kit.SlackBuild
+        deleted:Use Jack2 instead:    jack-audio-connection-kit/jack-audio-connection-kit.info
+        deleted:Use Jack2 instead:    jack-audio-connection-kit/slack-desc
+        modified:compile jobs per cpu cores   lame/lame.SlackBuild
+        modified:compile jobs per cpu cores   libmp4v2/libmp4v2.SlackBuild
+        modified:compile jobs per cpu cores   libshout/libshout.SlackBuild
+        modified:compile jobs per cpu cores   mixxx/mixxx.SlackBuild
+        modified:compile jobs per cpu cores   opus/opus.SlackBuild
+        modified:compile jobs per cpu cores   portaudio/portaudio.SlackBuild
+        modified:compile jobs per cpu cores   portmidi/portmidi.SlackBuild
+        modified:compile jobs per cpu cores   protobuf/protobuf.SlackBuild
+        modified:compile jobs per cpu cores   rubberband/rubberband.SlackBuild
+        deleted:In slackware now:    scons/README
+        deleted:In slackware now:    scons/scons.SlackBuild
+        deleted:In slackware now:    scons/scons.info
+        deleted:In slackware now:    scons/slack-desc
+        modified:compile jobs per cpu cores   speex/speex.SlackBuild
+        deleted:In slackware now:    taglib/slack-desc
+        deleted:In slackware now:    taglib/taglib.SlackBuild
+        modified:compile jobs per cpu cores   vamp-plugin-sdk/vamp-plugin-sdk.SlackBuild
+        modified:remove and add programs   ../mixxx-build.Slackbuild.sh
+ 
