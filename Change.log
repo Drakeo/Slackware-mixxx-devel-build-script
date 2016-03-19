@@ -26,4 +26,6 @@
         modified:remove and add programs   ../mixxx-build.Slackbuild.sh
         Sat Mar 19 06:09:33 CDT 2016
         roll back to revision  2e11533 do to broken stream internet.
+        Sat Mar 19 13:44:44 CDT 2016
+        add build qt5 for mixxx
  

@@ -85,7 +85,7 @@ for dir in \
   buildmixxx/portmidi \
   buildmixxx/vamp-plugin-sdk \
   buildmixxx/rubberband \
-  buildmixxx/mixxx \
+  buildmixxx/mixxx-qt5 \
   ; do
   # Get the package name
   package=$(echo $dir | cut -f2- -d /) 
