@@ -61,7 +61,7 @@ cd $CWD/$PRGNAM
 else
   git clone https://github.com/mixxxdj/mixxx.git
 fi
-
+cd $CWD/$PRGNAM
 git checkout  2e11533 
 cd $CWD
 
