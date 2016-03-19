@@ -61,6 +61,7 @@ cd $CWD/$PRGNAM
 else
   git clone https://github.com/mixxxdj/mixxx.git
 fi
+
 git checkout  2e11533 
 cd $CWD
 
@@ -68,6 +69,10 @@ cp -rf mixxx/ mixxx-2.1.dev
 tar cvf  mixxx-2.1.dev.tar.gz mixxx-2.1.dev/
 sleep 3
 rm -rf mixxx-2.1.dev
+
+cd $CWD/$PRGNAM
+git checkout master
+cd $CWD
 
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"
