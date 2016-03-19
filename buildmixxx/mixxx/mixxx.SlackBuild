@@ -38,7 +38,7 @@ NPROC=$(nproc)
 #  6  K8/Opteron/AMD64
 #  7  K8/Opteron/AMD64 w/ SSE3  my default
 #
-OPTIMIZE=${OPTIMIZE:-" optimize=native "}
+OPTIMIZE=${OPTIMIZE:-" optimize=7 "}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -61,7 +61,7 @@ cd $CWD/$PRGNAM
 else
   git clone https://github.com/mixxxdj/mixxx.git
 fi
-
+git checkout  2e11533 
 cd $CWD
 
 cp -rf mixxx/ mixxx-2.1.dev
