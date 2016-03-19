@@ -24,4 +24,6 @@
         deleted:In slackware now:    taglib/taglib.SlackBuild
         modified:compile jobs per cpu cores   vamp-plugin-sdk/vamp-plugin-sdk.SlackBuild
         modified:remove and add programs   ../mixxx-build.Slackbuild.sh
+        Sat Mar 19 06:09:33 CDT 2016
+        roll back to revision  2e11533 do to broken stream internet.
  
