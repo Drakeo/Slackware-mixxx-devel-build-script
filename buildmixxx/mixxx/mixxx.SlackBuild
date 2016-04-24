@@ -62,7 +62,7 @@ else
   git clone https://github.com/mixxxdj/mixxx.git
 fi
 cd $CWD/$PRGNAM
-git checkout   0dce2bc
+git checkout  0dce2bc
 cd $CWD
 
 cp -rf mixxx/ mixxx-2.1.dev
