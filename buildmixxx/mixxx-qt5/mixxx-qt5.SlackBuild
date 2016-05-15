@@ -26,6 +26,8 @@ PRGNAM=mixxx
 VERSION=${VERSION:-2.1.dev}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_DRKo}
+# set REV to any revision you want or it builds master tip
+REV=master
 
 # number of jobs set to your cpu cores
 NPROC=$(nproc)
@@ -62,7 +64,7 @@ else
   git clone https://github.com/mixxxdj/mixxx.git
 fi
 cd $CWD/$PRGNAM
-git checkout  2511a95
+git checkout  $REV 
 cd $CWD
 
 cp -rf mixxx/ mixxx-2.1.dev

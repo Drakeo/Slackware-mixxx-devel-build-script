@@ -23,3 +23,4 @@ NPROC=$(nproc) and -j$NPROC  automatically sets the build stack to the amount of
 this allows for the fastest build time. mabe some day slackbuilds will pick this up.
 
 you will need to rubuild slackware pulseaudio for jack2. 
+if master tip revison is unstable you may set REV= to the latestest stable commit.
