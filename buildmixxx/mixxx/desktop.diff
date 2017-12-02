@@ -1,9 +1,9 @@
---- res/linux/mixxx.desktop	2015-10-18 06:52:05.930333907 -0500
-+++ res/linux/.mixxx.desktop	2015-10-18 07:04:25.650277473 -0500
-@@ -6,7 +6,7 @@
- GenericName[de]=Digitales DJ-System
+--- res/linux/mixxx.desktop	2017-12-02 05:15:54.775007000 -0600
++++ res/linux/.mixxx.desktop	2017-12-02 05:46:36.043007000 -0600
+@@ -8,7 +8,7 @@
  Comment=A digital DJ interface
  Comment[de]=Ein digitales DJ-System
+ Comment[fr]=Une interface numérique pour DJ
 -Exec=sh -c "pasuspender mixxx || mixxx"
 +Exec=mixxx
  Terminal=false
