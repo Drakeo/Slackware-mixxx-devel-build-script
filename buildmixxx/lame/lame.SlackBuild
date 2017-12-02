@@ -27,6 +27,7 @@ PRGNAM=lame
 VERSION=${VERSION:-3.99.5}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
+NPROC=$(nproc)
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -86,7 +87,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --enable-nasm \
   --build=$ARCH-slackware-linux
 
-make pkgdocdir=/usr/doc/$PRGNAM-$VERSION
+make -j$NPROC pkgdocdir=/usr/doc/$PRGNAM-$VERSION
 make install pkgdocdir=/usr/doc/$PRGNAM-$VERSION DESTDIR=$PKG
 
 find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \

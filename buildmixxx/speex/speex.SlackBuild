@@ -49,6 +49,7 @@ CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
+NPROC=$(nproc)
 
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"
@@ -95,7 +96,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --build=$ARCH-slackware-linux
 
 # Hack to also make it look in the right directory on multilib systems
-make LDFLAGS="-L/usr/lib${LIBDIRSUFFIX}"
+make -j$NPROC LDFLAGS="-L/usr/lib${LIBDIRSUFFIX}"
 make install DESTDIR=$PKG
 
 cp -a \

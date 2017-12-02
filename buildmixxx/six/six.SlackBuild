@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://pypi.python.org/packages/source/s/six/six-1.8.0.tar.gz
+wget -c https://pypi.python.org/packages/11/3f/2b3c217c5427cdd12619024b1ee1b04d49e27fde5c29df2a0b92c26677c2/six-1.8.0.tar.gz#md5=1626eb24cc889110c38f7e786ec69885
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}

@@ -21,7 +21,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=taglib
-VERSION=${VERSION:-1.9.1}
+VERSION=${VERSION:-1.10}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -33,7 +33,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://carroll.cac.psu.edu/pub/linux/distributions/slackware/slackware64-current/source/l/taglib/taglib-1.9.1.tar.xz
+wget -c https://mirrors.kernel.org/slackware/slackware64-14.2/source/l/taglib/taglib-1.10.tar.xz
 
 NUMJOBS=${NUMJOBS:-" -j7 "}
 

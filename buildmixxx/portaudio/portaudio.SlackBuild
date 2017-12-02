@@ -41,7 +41,7 @@ fi
 
 wget -c http://www.portaudio.com/archives/pa_stable_v19_20111121.tgz
 
-NUMJOBS=${NUMJOBS:-" -j8 "}
+NPROC=$(nproc)
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
@@ -89,7 +89,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --localstatedir=/var \
   --build=$ARCH-slackware-linux
 
-make $NUMJOBS || make
+make -j$NPROC || make
 make install DESTDIR=$PKG
 
 find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \

@@ -21,7 +21,7 @@ fi
 
 wget -c https://github.com/google/protobuf/releases/download/v2.6.1/protobuf-2.6.1.tar.bz2
 
-NUMJOBS=${NUMJOBS:-" -j8 "}
+NPROC=$(nproc)
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
@@ -68,7 +68,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --mandir=/usr/man \
   --build=$ARCH-slackware-linux
 
-make $NUMJOBS || make
+make -j$NPROC || make
 make install DESTDIR=$PKG
 
 # Install the python bindings

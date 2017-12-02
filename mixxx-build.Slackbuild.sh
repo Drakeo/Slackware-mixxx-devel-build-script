@@ -78,6 +78,7 @@ for dir in \
   buildmixxx/speex \
   buildmixxx/scons \
   buildmixxx/jack-audio-connection-kit \
+  buildmixxx/jack2 \
   buildmixxx/lame \
   buildmixxx/protobuf \
   buildmixxx/chromaprint \

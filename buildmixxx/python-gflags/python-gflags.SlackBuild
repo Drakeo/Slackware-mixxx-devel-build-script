@@ -35,8 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://python-gflags.googlecode.com/files/python-gflags-2.0.tar.gz
-
+wget -c https://pypi.python.org/packages/46/47/12c17c3216c04a85e5ffd9163ad09f0c1661c2cc2ccc0faf70e39cb8dc96/python-gflags-2.0.tar.gz
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM

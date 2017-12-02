@@ -37,7 +37,7 @@ fi
 
 wget -c http://downloads.sourceforge.net/faac/faad2-2.7.tar.bz2
 
-NUMJOBS=${NUMJOBS:-" -j8 "}
+NPROC=$(nproc)
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
@@ -87,7 +87,7 @@ CXXFLAGS="$SLKCFLAGS" \
 # but actually breaks the base functionality. -HW
 # --with-drm
 
-make $NUMJOBS || make
+make -j$NPROC || make
 make install-strip DESTDIR=$PKG
 
 # Compress man pages

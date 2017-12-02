@@ -39,9 +39,9 @@ VERSION=${VERSION:-2.0.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_DRKo}
 
-wget -c http://mp4v2.googlecode.com/files/mp4v2-2.0.0.tar.bz2
+wget -c https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mp4v2/mp4v2-2.0.0.tar.bz2
 
-NUMJOBS=${NUMJOBS:-" -j8 "}
+NPROC=$(nproc)
 
 if [ ! -e $CWD/$PKGNAME-$VERSION.tar.bz2 ]; then
  wget $SOURCE
@@ -96,7 +96,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --mandir=/usr/man \
   --build=$ARCH-slackware-linux
 
-make $NUMJOBS || make
+make -j$NPROC || make
 make install DESTDIR=$PKG
 
 find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \

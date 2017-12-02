@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-2.4.1.tar.bz2
+wget -c https://pypi.python.org/packages/62/fe/45044dfa6bfa6ff18ddfe1df85fbf01d333c284b94e8c9a02fe12241c8cf/python-dateutil-2.4.1.tar.bz2#md5=6603c54f37cace901157e2ec2443e96b
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}

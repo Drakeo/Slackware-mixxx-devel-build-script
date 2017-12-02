@@ -30,7 +30,7 @@ fi
 
 wget -c https://code.soundsoftware.ac.uk/attachments/download/690/vamp-plugin-sdk-2.5.tar.gz
 
-NUMJOBS=${NUMJOBS:-" -j8 "}
+NPROC=$(nproc)
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
@@ -77,7 +77,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --enable-programs=${PRG_BUILD:-yes} \
   --build=$ARCH-slackware-linux
 
-make $NUMJOBS || make
+make -j$NPROC || make
 make install DESTDIR=$PKG
 
 # we don't want the static libs

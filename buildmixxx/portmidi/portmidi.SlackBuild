@@ -28,6 +28,7 @@ PRGNAM=portmidi
 VERSION=${VERSION:-217}
 BUILD=${BUILD:-4}
 TAG=${TAG:-_SBo}
+NPROC=$(nproc)
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -93,7 +94,7 @@ cmake . \
 # https://bugs.archlinux.org/task/29214
 sed -i "s|pm_java/pm_java|pm_java|" pm_java/CMakeFiles/pmdefaults_target.dir/build.make
 
-make all \
+make -j$NPROC all \
   CFLAGS="-fPIC" \
   PMFLAGS="-DNEWBUFFER" -j1
 make install DESTDIR=$PKG

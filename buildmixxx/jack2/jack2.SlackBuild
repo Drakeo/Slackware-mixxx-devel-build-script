@@ -1,8 +1,9 @@
 #!/bin/sh
 
-# Slackware build script for opus
+# Slackware build script for "jack2".
 
-# Copyright 2012-2013 Willy Sudiarto Raharjo <willysr@slackbuilds.org>
+# Copyright 2014 Yanes Checcacci Balod <yanes@pobox.com>, Brazil
+# Copyright 2014-2015 Marcel Saegebarth <marc@mos6581.de>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -22,8 +23,9 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-PRGNAM=opus
-VERSION=${VERSION:-1.1}
+PRGNAM=jack2
+SRCNAM=jack
+VERSION=${VERSION:-1.9.10}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -35,9 +37,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://downloads.xiph.org/releases/opus/opus-1.1.tar.gz
-
-NPROC=$(nproc)
+wget -c https://s.mos6581.de/static/slackbuilds.org/sources/jack-1.9.10.tar.bz2
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
@@ -63,30 +63,29 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
-cd $PRGNAM-$VERSION
+rm -rf $SRCNAM-$VERSION
+tar xvf $CWD/$SRCNAM-$VERSION.tar.bz2
+cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
   -o -perm 511 \) -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
- -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
-./configure \
+./waf configure \
   --prefix=/usr \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --sysconfdir=/etc \
-  --localstatedir=/var \
-  --mandir=/usr/man \
-  --docdir=/usr/doc/$PRGNAM-$VERSION \
-  --disable-static \
-  --build=$ARCH-slackware-linux
+  --mandir=/usr/man/man1 \
+  --classic \
+  --profile \
+  --dbus \
+  --alsa
 
-make -j$NPROC || make
-make install DESTDIR=$PKG
+./waf build
+./waf install --destdir=$PKG
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
@@ -95,13 +94,18 @@ find $PKG/usr/man -type f -exec gzip -9 {} \;
 for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a \
-  AUTHORS COPYING INSTALL README  \
-  $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
+
+# Only add capability stuff if not disabled:
+if [ "${SETCAP:-yes}" = "yes" ]; then
+  cat $CWD/setcap.sh >> $PKG/install/doinst.sh
+  # Only allow execution by audio group
+  chown root:audio $PKG/usr/bin/*
+  chmod 0750 $PKG/usr/bin/*
+fi
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
