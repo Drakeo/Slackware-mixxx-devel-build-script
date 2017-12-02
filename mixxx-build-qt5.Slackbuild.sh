@@ -75,6 +75,7 @@ for dir in \
   buildmixxx/six \
   buildmixxx/python-dateutil\
   buildmixxx/speex \
+  buildmixxx/jack-audio-connection-kit \
   buildmixxx/jack2 \
   buildmixxx/lame \
   buildmixxx/protobuf \

@@ -93,7 +93,7 @@ cd build
     -DWITH_AVFFT="$avfft" \
     -DWITH_FFTW3="$fftw3" \
     -DBUILD_TOOLS="$tools" \
-    -DBUILD_EXAMPLES="ON" \
+    -DBUILD_EXAMPLES="OFF" \
     -DCMAKE_BUILD_TYPE=Release ..
 make -j$NPROC || make
 make install DESTDIR=$PKG
