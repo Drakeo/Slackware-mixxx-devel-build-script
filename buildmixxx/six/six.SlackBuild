@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=six
-VERSION=${VERSION:-1.8.0}
+VERSION=${VERSION:-1.12.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://pypi.python.org/packages/source/s/six/six-1.8.0.tar.gz
+wget -c https://pypi.io/packages/source/s/six/six-1.12.0.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
@@ -74,7 +74,7 @@ if $(python -c 'import sphinx.pygments_styles' 2>/dev/null); then
 fi
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a LICENSE PKG-INFO README $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a LICENSE PKG-INFO README.rst $PKG/usr/doc/$PRGNAM-$VERSION
 [ -d documentation/_build/singlehtml ] && \
   cp -a documentation/_build/singlehtml/index.html \
     documentation/_build/singlehtml/_static \
