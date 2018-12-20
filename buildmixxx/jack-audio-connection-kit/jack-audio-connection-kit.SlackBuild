@@ -26,7 +26,7 @@
 # No additional license terms added  :)
 
 PRGNAM=jack-audio-connection-kit
-VERSION=${VERSION:-0.124.1}
+VERSION=${VERSION:-0.125.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -38,7 +38,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://jackaudio.org/downloads/jack-audio-connection-kit-0.124.1.tar.gz
+wget -c http://jackaudio.org/downloads/jack-audio-connection-kit-0.125.0.tar.gz
 
 NUMJOBS=${NUMJOBS:-" -j8 "}
 
@@ -106,6 +106,15 @@ cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
+
+SETCAP=yes
+# Only add capability stuff if not disabled:
+if [ "${SETCAP:-yes}" = "yes" ]; then
+  cat $CWD/setcap.sh >> $PKG/install/doinst.sh
+  # Only allow execution by audio group
+  chown root:audio $PKG/usr/bin/*
+  chmod 0750 $PKG/usr/bin/*
+fi
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
