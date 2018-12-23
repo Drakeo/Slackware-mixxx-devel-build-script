@@ -45,7 +45,7 @@
    exit 1
 fi
   
- if [ -f /var/log/packages/ffmpeg-* ]; then
+ if [ -f /usr/bin/ffmpeg ]; then
      FFMPG="ffmpeg-*" 
  else
    echo -e "\e[1;33m you must install ffmpeg.\e[0m"   
