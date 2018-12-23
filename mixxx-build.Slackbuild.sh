@@ -45,8 +45,8 @@
    exit 1
 fi
   
- if [ -f /var/log/packages/ffmpeg-* ]; then
-     FFMPG="ffmpeg-*" 
+ if [ -f /usr/bin/ffmpeg ]; then
+     FFMPG="ffmpeg" 
  else
    echo -e "\e[1;33m you must install ffmpeg.\e[0m"   
   echo -e "\e[1;33m http://www.slackware.com/~alien/slackbuilds/ffmpeg .\e[0m" 
@@ -76,7 +76,6 @@ for dir in \
   buildmixxx/python-dateutil\
   buildmixxx/speex \
   buildmixxx/jack-audio-connection-kit \
-  buildmixxx/jack2 \
   buildmixxx/lame \
   buildmixxx/protobuf \
   buildmixxx/chromaprint \
