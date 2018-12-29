@@ -73,6 +73,7 @@ for dir in \
   buildmixxx/pysetuptools \
   buildmixxx/python-gflags \
   buildmixxx/six \
+  buildmixxx/google-apputils \
   buildmixxx/python-dateutil\
   buildmixxx/speex \
   buildmixxx/jack-audio-connection-kit \
