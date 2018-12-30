@@ -67,7 +67,6 @@ for dir in \
   buildmixxx/set_rlimits \
   buildmixxx/faad2 \
   buildmixxx/libmp4v2 \
-  buildmixxx/id3lib \
   buildmixxx/pytz \
   buildmixxx/pysetuptools \
   buildmixxx/python-gflags \
