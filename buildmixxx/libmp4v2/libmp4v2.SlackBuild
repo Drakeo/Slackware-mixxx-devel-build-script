@@ -35,11 +35,15 @@
 
 PRGNAM=libmp4v2
 SRCNAM=mp4v2
-VERSION=${VERSION:-2.0.0}
+VERSION=${VERSION:-3.0.3}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_DRKo}
 
-wget -c https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mp4v2/mp4v2-2.0.0.tar.bz2
+#wget -c https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mp4v2/mp4v2-2.0.0.tar.bz2
+git clone https://github.com/Drakeo/mp4v2.git 
+mv mp4v2 mp4v2-3.0.3
+tar czvf mp4v2-3.0.3.tar.bz2 mp4v2-3.0.3
+rm -rf mp4v2-3.0.3
 
 NPROC=$(nproc)
 
@@ -114,6 +118,6 @@ rm -rf $PKG/usr/man/manm
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
-
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

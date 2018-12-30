@@ -65,19 +65,15 @@ MIXXXROOT=$(pwd)
 # Loop for all packages
 for dir in \
   buildmixxx/set_rlimits \
-  buildmixxx/opus \
   buildmixxx/faad2 \
   buildmixxx/libmp4v2 \
-  buildmixxx/id3lib \
   buildmixxx/pytz \
   buildmixxx/pysetuptools \
   buildmixxx/python-gflags \
   buildmixxx/six \
   buildmixxx/google-apputils \
   buildmixxx/python-dateutil\
-  buildmixxx/speex \
   buildmixxx/jack-audio-connection-kit \
-  buildmixxx/lame \
   buildmixxx/protobuf \
   buildmixxx/chromaprint \
   buildmixxx/ladspa_sdk  \
