@@ -73,7 +73,6 @@ for dir in \
   buildmixxx/six \
   buildmixxx/google-apputils \
   buildmixxx/python-dateutil\
-  buildmixxx/speex \
   buildmixxx/jack-audio-connection-kit \
   buildmixxx/lame \
   buildmixxx/protobuf \
