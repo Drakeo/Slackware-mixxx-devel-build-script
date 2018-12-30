@@ -115,6 +115,6 @@ if [ "${SETCAP:-yes}" = "yes" ]; then
   chown root:audio $PKG/usr/bin/*
   chmod 0750 $PKG/usr/bin/*
 fi
-
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
