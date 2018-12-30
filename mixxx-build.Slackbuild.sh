@@ -74,7 +74,6 @@ for dir in \
   buildmixxx/google-apputils \
   buildmixxx/python-dateutil\
   buildmixxx/jack-audio-connection-kit \
-  buildmixxx/lame \
   buildmixxx/protobuf \
   buildmixxx/chromaprint \
   buildmixxx/ladspa_sdk  \
