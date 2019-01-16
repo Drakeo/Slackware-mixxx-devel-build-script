@@ -75,7 +75,7 @@ git checkout  $REV
 cd $CWD
 
 cp -rf mixxx/ mixxx-$REV
-ex -sc '%s/Exec=sh -c "pasuspender -- mixxx || mixxx"/Exec=mixxx/g|x' $CWD/$PRGNAM-$VERSION/res/linux/mixxx.desktop
+sed -i 's/Exec=sh -c "pasuspender -- mixxx || mixxx"/Exec=mixxx/g' mixxx.desktop
 tar cvf  mixxx-$REV.tar.gz mixxx-$REV
 sleep 3
 rm -rf mixxx-$REV
