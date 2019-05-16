@@ -16,7 +16,7 @@
 # - Fix the x86_64 lib path in the .pc files, too
 
 PRGNAM=vamp-plugin-sdk
-VERSION=${VERSION:-2.5}
+VERSION=${VERSION:-2.8.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -28,7 +28,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://code.soundsoftware.ac.uk/attachments/download/690/vamp-plugin-sdk-2.5.tar.gz
+wget -c https://code.soundsoftware.ac.uk/attachments/download/2450/vamp-plugin-sdk-2.8.0.tar.gz
 
 NPROC=$(nproc)
 

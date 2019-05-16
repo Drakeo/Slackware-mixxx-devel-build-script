@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
     |-----handy-ruler------------------------------------------------------|
-opus: opus (Audio Codec)
-opus:
-opus: Opus is a totally open, royalty-free, highly versatile audio codec.
-opus: It is standardized by the Internet Engineering Task Force (IETF)
-opus: as RFC 6716 which incorporated technology from Skype's SILK codec
-opus: and Xiph.Org's CELT codec.
-opus:
-opus: Project site: https://opus-codec.org/
-opus:
-opus:
-opus:
+QUSB: QUSB (Qt wrapper classes for LibUSB 1.0)
+QUSB:
+QUSB: This project contains a library that wraps LibUSB functionalities
+QUSB: into Qt classes to ease usage in Qt applications.
+QUSB:
+QUSB:
+QUSB:
+QUSB:
+QUSB:
+QUSB:
+QUSB:

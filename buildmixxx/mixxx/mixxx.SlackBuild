@@ -25,7 +25,7 @@
 
 PRGNAM=mixxx
 VERSION=${VERSION:-2.1}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_DRKo}
 # set REV to QT Installed on system
  if [ -f  /etc/profile.d/qt4.sh ]; then
@@ -62,23 +62,19 @@ TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
-
-if [ -d $CWD/$PRGNAM ]
-then
-cd $CWD/$PRGNAM
-  git pull
+if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
+ echo $PRGNAM-$VERSION.tar.gz built
 else
-  git clone https://github.com/mixxxdj/mixxx.git
+	git clone https://github.com/mixxxdj/mixxx.git
+	cd $CWD/$PRGNAM
+	git checkout $VERSION
+	sed -i 's/Exec=sh -c "pasuspender -- mixxx || mixxx"/Exec=set_rlimits -r mixxx/g' res/linux/mixxx.desktop
+	cd $CWD
+	mv  $PRGNAM  $PRGNAM-$VERSION
+	tar cvf  $PRGNAM-$VERSION.tar.gz $PRGNAM-$VERSION
+	rm -rf $PRGNAM-$VERSION
 fi
-cd $CWD/$PRGNAM
-git checkout  $REV 
-cd $CWD
 
-cp -rf mixxx/ mixxx-$REV
-sed -i 's/Exec=sh -c "pasuspender -- mixxx || mixxx"/Exec=mixxx/g' mixxx.desktop
-tar cvf  mixxx-$REV.tar.gz mixxx-$REV
-sleep 3
-rm -rf mixxx-$REV
 
 cd $CWD/$PRGNAM
 git checkout master
@@ -106,7 +102,7 @@ cd $TMP
 rm -rf $PRGNAM-$VERSION
 tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
 sleep 3
-rm $CWD/$PRGNAM-$VERSION.tar.gz # want to make sure a fresh tarball everytime.
+
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find . \
@@ -115,14 +111,13 @@ find . \
  \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
  -exec chmod 644 {} \;
 
- # Fix the desktop file
-#patch -p0 < $CWD/$VERSION-desktop.diff
 
 # it seems libshout isn't detected :(
   CFLAGS="$SLKCFLAGS" \
   QTDIR=/usr/lib$LIBDIRSUFFIX/ \
   LIBIR=/usr/lib$LIBDIRSUFFIX \
 scons  -j$NPROC $OPTIMIZE \
+  opus=1 \
   faad=1 \
   prefix=/usr \
   LIBIR=/usr/lib$LIBDIRSUFFIX \
@@ -155,6 +150,6 @@ fi
  GITREV=$(cat /tmp/SBo/mixxx-$REV/src/build.h | head -n 2 | tail -1 | cut -c20-23)
   
 cd $PKG
-/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$GITREV$TAG-$BUILD.${PKGTYPE:-tgz}
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
 
 

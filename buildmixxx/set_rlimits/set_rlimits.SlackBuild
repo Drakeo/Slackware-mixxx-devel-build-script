@@ -47,6 +47,49 @@ cd $TMP
 rm -rf $PKGNAME-$VERSION
 tar xvf $CWD/$PKGNAME-$VERSION.tgz
 cd $PKGNAME-$VERSION
+rm -rf set_rlimits.conf
+cat > set_rlimits.conf <<EOF
+# Configuration file for set_rlimits.  Format is:
+#
+#   name   program   max_nice_priority  max_realtime_priority
+# or
+#   name   program   <key>=<value> ...
+#
+# name is expected to be a username, a groupname if preceeded by a @ sign,
+# or ALL (which matches all users).  Negative priorities effectively
+# disallow any setting of the respective priority for the matching entry. 
+# <key> can be rtprio, nice or memlock.
+# Example entry:
+# 
+#   flats /usr/local/bin/jackd  -1  80
+#
+# Here, user mark can execute /usr/local/bin/jackd using set_rlimits to set
+# a realtime priority up to and including 80, but setting of a nice priority
+# through set_rlimits is disallowed.  Alternatively, if an audio group
+# existed, the entry
+#
+ @audio /usr/bin/jackd  -1  99
+# 
+ @audio  /usr/bin/qjackctl  -1  99
+# 
+ @audio  /usr/bin/alsa_out -1 99
+#
+#
+# would allow the same except the permission would extend to all members of
+# the audio group.  The same effect could be achieved with the key/value
+# syntax:
+#
+ @audio /usr/bin/qsynth -1 99
+# For more details on the format and use of this file please refer to
+# the set_rlimits manual page.
+ @audio /usr/bin/mixxx -1 99 
+#
+# @audio /usr/bin/qtractor soft rtprio 99  
+ @audio - rtprio 99 
+ @audio - memlock unlimited 
+ @audio - nice -19
+EOF
+
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
