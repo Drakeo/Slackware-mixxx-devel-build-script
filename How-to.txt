@@ -1,0 +1,15 @@
+Qjackctl must be runn before MIXXX is ran.
+ how to set up qjackctl
+ with a full install set_rlimits is already configured for 
+ qjackctl and mixxx
+ run qjackctl from the meneu or 
+ run from terminal set_rlimits -r qjackctl
+ click setup then select options.
+ the scripts to work with pulseaudio are
+ /usr/share/qjackctl/pulse-jack-scripts
+pulse-jack-pre-start.sh
+pulse-jack-post-start.sh
+pulse-jack-pre-stop.sh
+pulse-jack-post-stop.sh
+look at How-to-qjackctl.png
+
