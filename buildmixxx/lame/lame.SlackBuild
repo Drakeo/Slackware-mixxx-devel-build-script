@@ -1,8 +1,9 @@
 #!/bin/sh
 
-# Slackware build script for jack-audio-connection-kit
+# Slackware build script for lame
 
-# Copyright 2007-2014 Heinz Wiesinger, Amsterdam, The Netherlands
+# Copyright 2006  Martin Lefebvre <dadexter@gmail.com>
+# Copyright 2008,2010  Michiel van Wessem, Manchester, United Kingdom
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -22,13 +23,11 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Modified by Robby Workman <rworkman@slackbuilds.org>
-# No additional license terms added  :)
-
-PRGNAM=jack-audio-connection-kit
-VERSION=${VERSION:-0.125.0}
+PRGNAM=lame
+VERSION=${VERSION:-3.99.5}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
+NPROC=$(nproc)
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -38,9 +37,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://jackaudio.org/downloads/jack-audio-connection-kit-0.125.0.tar.gz
-
-NUMJOBS=${NUMJOBS:-" -j8 "}
+wget -c http://downloads.sourceforge.net/lame/lame-3.99.5.tar.gz
 
 
 CWD=$(pwd)
@@ -62,7 +59,7 @@ else
   LIBDIRSUFFIX=""
 fi
 
-set -e
+set -e  
 
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
@@ -84,37 +81,27 @@ CXXFLAGS="$SLKCFLAGS" \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
   --sysconfdir=/etc \
   --localstatedir=/var \
-  --with-html-dir=/usr/doc/$PRGNAM-$VERSION \
   --mandir=/usr/man \
-  --enable-optimize \
-  --with-default-tmpdir=/dev/shm \
-  --build=$ARCH-slackware-linux \
-  --host=$ARCH-slackware-linux
+  --docdir=/usr/doc/$PRGNAM-$VERSION \
+  --htmldir=/usr/doc/$PRGNAM-$VERSION \
+  --enable-nasm \
+  --build=$ARCH-slackware-linux
 
-make $NUMJOBS || make
-make install DESTDIR=$PKG
+make -j$NPROC pkgdocdir=/usr/doc/$PRGNAM-$VERSION
+make install pkgdocdir=/usr/doc/$PRGNAM-$VERSION DESTDIR=$PKG
 
 find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 find $PKG/usr/man -type f -exec gzip -9 {} \;
-for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a AUTHORS COPYING* README TODO $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a API COPYING ChangeLog DEFINES HACKING INSTALL* LICENSE README* \
+  STYLEGUIDE TODO USAGE $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 
-SETCAP=yes
-# Only add capability stuff if not disabled:
-if [ "${SETCAP:-yes}" = "yes" ]; then
-  cat $CWD/setcap.sh >> $PKG/install/doinst.sh
-  # Only allow execution by audio group
-  chown root:audio $PKG/usr/bin/*
-  chmod 0750 $PKG/usr/bin/*
-fi
-rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

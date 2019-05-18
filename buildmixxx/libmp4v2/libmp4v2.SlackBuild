@@ -34,22 +34,11 @@
 # Modified by the SlackBuilds.org Project
 
 PRGNAM=libmp4v2
-SRCNAM=mp4v2
-VERSION=${VERSION:-3.0.3}
+VERSION=${VERSION:-3.0.4}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_DRKo}
 
-#wget -c https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mp4v2/mp4v2-2.0.0.tar.bz2
-git clone https://github.com/Drakeo/mp4v2.git 
-mv mp4v2 mp4v2-3.0.3
-tar czvf mp4v2-3.0.3.tar.bz2 mp4v2-3.0.3
-rm -rf mp4v2-3.0.3
 
-NPROC=$(nproc)
-
-if [ ! -e $CWD/$PKGNAME-$VERSION.tar.bz2 ]; then
- wget $SOURCE
-fi
 
 # Automatically determine the architecture we're building on:
 if [ -z "$ARCH" ]; then
@@ -65,6 +54,18 @@ CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
+
+if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
+ echo $PRGNAM-$VERSION.tar.gz built
+else
+	git clone https://github.com/Drakeo/mp4v2.git $PRGNAM-$VERSION
+	cd $CWD/$PRGNAM-$VERSION
+	git checkout $VERSION
+	cd $CWD
+	tar cvf  $PRGNAM-$VERSION.tar.gz $PRGNAM-$VERSION
+	rm -rf $PRGNAM-$VERSION
+fi
+NPROC=$(nproc)
 
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"
@@ -82,11 +83,11 @@ fi
 
 set -e
 
-rm -rf $TMP/$SRCNAM-$VERSION $PKG
+rm -rf $TMP/$PRGNAM-$VERSION $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-tar xvf $CWD/$SRCNAM-$VERSION.tar.bz2
-cd $SRCNAM-$VERSION
+tar xvf $CWD/$PRGNAM-$VERSION.tar.?z
+cd $PRGNAM-$VERSION
 chown -R root:root .
 chmod -R u+w,go+r-w,a-s .
 
