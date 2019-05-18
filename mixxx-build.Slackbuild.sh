@@ -74,7 +74,6 @@ for dir in \
   buildmixxx/pytz \
   buildmixxx/pysetuptools \
   buildmixxx/python-gflags \
-  buildmixxx/six \
   buildmixxx/google-apputils \
   buildmixxx/python-dateutil\
   buildmixxx/jack2 \
