@@ -1,3 +1,3 @@
 #!/bin/bash
 pacmd suspend true
-cp asoundrc ~/.asoundrc
+cp /usr/share/qjackctl/pulse-jack-scripts/asoundrc ~/.asoundrc
