@@ -23,8 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=QUSB
-VERSION=${VERSION:-0ec83ac}
-GITVER=0ec83acc541e4469a7f425b2579fcc029583fe02
+VERSION=${VERSION:-0.4.2}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -44,9 +43,9 @@ OUTPUT=${OUTPUT:-/tmp}
 if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
  echo $PRGNAM-$VERSION.tar.gz built
 else
-	git clone https://github.com/bimetek/QUSB.git
+	git clone https://github.com/fpoussin/QtUsb.git $PRGNAM
 	cd $CWD/$PRGNAM
-	git checkout $VERSION
+	git checkout v$VERSION
 	cd $CWD
 	mv  $PRGNAM  $PRGNAM-$VERSION
 	tar cvf  $PRGNAM-$VERSION.tar.gz $PRGNAM-$VERSION
@@ -82,12 +81,12 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-sed -i "s|/lib|/lib${LIBDIRSUFFIX}|g" src/src.pro
+
 qmake \
     QMAKE_CFLAGS+="$SLKCFLAGS" \
     QMAKE_CXXFLAGS+="$SLKCFLAGS" \
-    QUSB_INSTALL_PREFIX=/usr \
-    qusb.pro
+    QMAKE_LIBDIR=/usr/lib${LIBDIRSUFFIX}
+    QUSB_INSTALL_PREFIX=/usr 
 
 make
 make install INSTALL_ROOT=$PKG
@@ -99,12 +98,12 @@ find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | gr
 #for i in $(find $PKG/usr/man -type l) ; do ln -s $(readlink $i).gz $i.gz ; rm $i ; done
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a COPYING* README.md $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a LICENSE README.md $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 #cat $CWD/doinst.sh > $PKG/install/doinst.sh
-
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

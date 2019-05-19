@@ -71,6 +71,11 @@ for dir in \
   buildmixxx/faad2 \
   buildmixxx/soundtouch \
   buildmixxx/libmp4v2 \
+  buildmixxx/serd \
+  buildmixxx/sord \
+  buildmixxx/lv2 \
+  buildmixxx/sratom \
+  buildmixxx/lilv \
   buildmixxx/pytz \
   buildmixxx/pysetuptools \
   buildmixxx/python-gflags \

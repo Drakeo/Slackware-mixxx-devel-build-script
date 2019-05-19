@@ -1,10 +1,8 @@
 #!/bin/sh
 
-# Slackware build script for "qjackctl".
+# Slackware build script for sratom
 
-# Copyright 2009, Erik W. Hanson, Minneapolis, MN, USA
-# Copyright 2012, James M. Brewster, Baltimore, MD, USA
-# Copyright 2014-2015 Marcel Saegebarth <marc@mos6581.de>
+# Copyright 2012-2016 Heinz Wiesinger, Amsterdam, The Netherlands
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -24,8 +22,8 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-PRGNAM=qjackctl
-VERSION=${VERSION:-0.5.7}
+PRGNAM=sratom
+VERSION=${VERSION:-0.4.6}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -42,7 +40,17 @@ TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
-wget -c http://downloads.sourceforge.net/project/qjackctl/qjackctl/$VERSION/$PRGNAM-$VERSION.tar.gz
+if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
+ echo $PRGNAM-$VERSION.tar.gz built
+else
+	git clone http://git.drobilla.net/$PRGNAM.git
+	cd $CWD/$PRGNAM
+	git checkout  v$VERSION
+	cd $CWD
+	mv  $PRGNAM  $PRGNAM-$VERSION
+	tar cvf  $PRGNAM-$VERSION.tar.gz $PRGNAM-$VERSION
+	rm -rf $PRGNAM-$VERSION
+fi
 
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"
@@ -58,65 +66,45 @@ else
   LIBDIRSUFFIX=""
 fi
 
-set -eu
+set -e
 
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xvf $CWD/$PRGNAM-$VERSION.tar.?z
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
   -o -perm 511 \) -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
-
-# Tell qmake about our SLKCFLAGS. Required to compile on x86_64
-# system. Thanks to Lyle Sigurdson <lyle@sent.com> on
-# linuxquestions.org for this patch.
-echo "QMAKE_CXXFLAGS_RELEASE=$SLKCFLAGS" >> qjackctl.pro.in
+ -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 CFLAGS="$SLKCFLAGS" \
-./configure \
+CXXFLAGS="$SLKCFLAGS" \
+./waf configure \
   --prefix=/usr \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --sysconfdir=/etc \
-  --localstatedir=/var \
+  --configdir=/etc \
   --mandir=/usr/man \
-  --docdir=/usr/doc/$PRGNAM-$VERSION \
-  --build=$ARCH-slackware-linux
+  --docdir=/usr/doc/$PRGNAM-$VERSION
 
-make -j8
-make install DESTDIR=$PKG
+./waf
+
+./waf install \
+  --destdir=$PKG
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
-find $PKG/usr/man -type f -exec gzip -9 {} \;
-for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
-
-# Make sure we have a standard-compliant desktop file
-cat $CWD/qjackctl.desktop > $PKG/usr/share/applications/qjackctl.desktop
-cp -rf $CWD/pulse-jack-scripts $PKG/usr/share/qjackctl/pulse-jack-scripts
-
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a AUTHORS COPYING ChangeLog INSTALL README TODO TRANSLATORS \
-      $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a COPYING NEWS README \
+  $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
-cat $CWD/doinst.sh > $PKG/install/doinst.sh
-
-# Only add capability stuff if not disabled:
-if [ "${SETCAP:-no}" = "yes" ]; then
-  cat $CWD/setcap.sh >> $PKG/install/doinst.sh
-  # Only allow execution by audio group
-  chown root:audio $PKG/usr/bin/*
-  chmod 0750 $PKG/usr/bin/*
-fi
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
