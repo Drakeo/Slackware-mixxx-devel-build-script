@@ -23,7 +23,7 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 PRGNAM=pulseaudio
-VERSION=${VERSION:-12.2}
+VERSION=${VERSION:-9.0}
 BUILD=${BUILD:-1}
 
 if [ -z "$ARCH" ]; then
@@ -43,7 +43,7 @@ if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
 else
 	git clone http://anongit.freedesktop.org/git/pulseaudio/pulseaudio.git
 	cd $CWD/$PRGNAM
-	git checkout master
+	git checkout v$VERSION
 	cd $CWD
 	mv  $PRGNAM  $PRGNAM-$VERSION
 	tar cvf  $PRGNAM-$VERSION.tar.gz $PRGNAM-$VERSION

@@ -66,7 +66,10 @@ MIXXXROOT=$(pwd)
 for dir in \
   buildmixxx/set_rlimits \
   buildmixxx/libebur128 \
+  buildmixxx/libmodplug \
   buildmixxx/QUSB \
+  buildmixxx/opus \
+  buildmixxx/opusfile \
   buildmixxx/hidapi \
   buildmixxx/faad2 \
   buildmixxx/soundtouch \
@@ -91,7 +94,7 @@ for dir in \
   buildmixxx/vamp-plugin-sdk \
   buildmixxx/rubberband \
   buildmixxx/pulseaudio \
-  buildmixxx/alsa-plugins \
+  buildmixxx/alsa-plugins-ffmpegJack \
   buildmixxx/qjackctl \
   buildmixxx/mixxx \
   ; do
