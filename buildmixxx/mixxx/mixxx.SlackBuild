@@ -120,6 +120,7 @@ export PKG_CONFIG_PATH=/usr/lib$LIBDIRSUFFIX/pkgconfig
 scons  -j$NPROC $OPTIMIZE \
   opus=1 \
   faad=1 \
+  vamp=1 \
   prefix=/usr \
   LIBIR=/usr/lib$LIBDIRSUFFIX \
   QTDIR=/usr/lib$LIBDIRSUFFIX \
