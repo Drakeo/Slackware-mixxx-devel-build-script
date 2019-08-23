@@ -24,15 +24,14 @@
 
 
 PRGNAM=mixxx
-VERSION=${VERSION:-2.1}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_DRKo}
 # set REV to QT Installed on system
  if [ -f  /etc/profile.d/qt4.sh ]; then
-     REV=2.1 
+     VERSION=${VERSION:-2.1}
      echo Bulding for qt4  
  else
-     REV=master
+     VERSION=${VERSION:-2.2}
      echo Bulding development qt5
  fi
 
@@ -123,7 +122,9 @@ find . \
   QTDIR=/usr/lib$LIBDIRSUFFIX/ \
   LIBIR=/usr/lib$LIBDIRSUFFIX \
 scons  -j$NPROC $OPTIMIZE \
+  opus=1 \
   faad=1 \
+  vamp=1 \
   prefix=/usr \
   LIBIR=/usr/lib$LIBDIRSUFFIX \
   QTDIR=/usr/lib$LIBDIRSUFFIX \
