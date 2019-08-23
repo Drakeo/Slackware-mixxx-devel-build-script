@@ -67,6 +67,7 @@ for dir in \
   buildmixxx/set_rlimits \
   buildmixxx/libebur128 \
   buildmixxx/QUSB \
+  buildmixxx/libmodplug \
   buildmixxx/hidapi \
   buildmixxx/faad2 \
   buildmixxx/soundtouch \
