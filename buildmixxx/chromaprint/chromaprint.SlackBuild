@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=chromaprint
-VERSION=${VERSION:-1.4.3}
+VERSION=${VERSION:-1.5.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -35,7 +35,12 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://github.com/acoustid/chromaprint/releases/download/v1.4.3/chromaprint-1.4.3.tar.gz
+echo FFMPG headers screws this build up
+echo have to uninstall ffmpeg
+sleep 3
+removepkg ffmpeg
+
+wget -c https://github.com/acoustid/chromaprint/releases/download/v1.5.0/chromaprint-1.5.0.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
@@ -90,7 +95,7 @@ cd ..
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
-
+  
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a $DOCS $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
@@ -100,3 +105,7 @@ cat $CWD/slack-desc > $PKG/install/slack-desc
 rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+echo we need to install ffmpeg again.
+echo if you have a custom ffmpeg then reinstall it.
+sleep 3
+slackpkg install ffmpeg
