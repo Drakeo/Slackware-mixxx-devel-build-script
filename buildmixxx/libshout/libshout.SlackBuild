@@ -6,12 +6,12 @@
 # Modified by Robby Workman <rworkman@slackbuilds.org>
 
 PRGNAM=libshout	
-VERSION=${VERSION:-2.3.1}
+VERSION=${VERSION:-2.4.3}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_DRKo}
 
 
-wget -c "http://downloads.xiph.org/releases/libshout/libshout-2.3.1.tar.gz"
+wget -c "http://downloads.xiph.org/releases/libshout/libshout-$VERSION.tar.gz"
 
 NPROC=$(nproc)
 
@@ -75,7 +75,7 @@ find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a doc/libshout.xml doc/spec-html.xsl $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a doc/libshout.xml  $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
