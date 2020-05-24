@@ -1,8 +1,8 @@
 # Build all the dependencies then build MIXXX
   You can download the prebuilt packages and install them.
-  ~~~
+
   upgradepkg --reinstall --install-new *.t?z
-  ~~~
+
 
 Jdk is only needed to build portmodi you may find a copy of it at http://slackware.org.uk/slacky/ 
     this will save you some time. 
