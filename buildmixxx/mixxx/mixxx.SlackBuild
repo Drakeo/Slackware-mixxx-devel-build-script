@@ -60,7 +60,7 @@ else
 	git clone https://github.com/mixxxdj/mixxx.git
 	cd $CWD/$PRGNAM
 	git checkout release-$VERSION
-	sed -i 's/Exec=sh -c "pasuspender -- mixxx || mixxx"/Exec=set_rlimits -r mixxx/g' res/linux/mixxx.desktop
+	sed -i 's/Exec=sh -c "pasuspender -- mixxx -platform xcb || mixxx -platform xcb"/Exec=sh -c "set_rlimits -r mixxx -platform xcb"/g' res/linux/mixxx.desktop
 	cd $CWD
 	mv  $PRGNAM  $PRGNAM-$VERSION
 	tar cvf  $PRGNAM-$VERSION.tar.gz $PRGNAM-$VERSION
