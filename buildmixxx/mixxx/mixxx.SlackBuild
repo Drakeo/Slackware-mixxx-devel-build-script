@@ -24,17 +24,9 @@
 
 
 PRGNAM=mixxx
-
+VERSION=${VERSION:-2.2.4}
 BUILD=${BUILD:-2}
 TAG=${TAG:-_DRKo}
-# set REV to QT Installed on system
- if [ -f  /etc/profile.d/qt4.sh ]; then
-     VERSION=${VERSION:-2.2.2}
-     echo Bulding for qt4  
- else
-     VERSION=${VERSION:-2.2.4}
-     echo Bulding development qt5
- fi
 
 # number of jobs set to your cpu cores
 NPROC=$(nproc)
