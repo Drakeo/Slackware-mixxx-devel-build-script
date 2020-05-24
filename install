@@ -26,3 +26,4 @@ you will need to rubuild slackware pulseaudio for jack2.
 if master tip revison is unstable you may set REV= to the latestest stable commit.
 #####!!!!! Dot  Flavors of Jack and Jack2 #####!!!!!
 #####!!!!! If Jack is already installed edit the script not to build it####!!!
+

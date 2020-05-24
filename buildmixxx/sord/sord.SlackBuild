@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# Slackware build script for jack-audio-connection-kit
+# Slackware build script for sord
 
-# Copyright 2007-2014 Heinz Wiesinger, Amsterdam, The Netherlands
+# Copyright 2012-2016 Heinz Wiesinger, Amsterdam, The Netherlands
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -22,11 +22,8 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Modified by Robby Workman <rworkman@slackbuilds.org>
-# No additional license terms added  :)
-
-PRGNAM=jack-audio-connection-kit
-VERSION=${VERSION:-0.125.0}
+PRGNAM=sord
+VERSION=${VERSION:-0.16.4}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -38,15 +35,12 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://jackaudio.org/downloads/jack-audio-connection-kit-0.125.0.tar.gz
-
-NUMJOBS=${NUMJOBS:-" -j8 "}
-
-
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
+
+wget -c http://download.drobilla.net/sord-$VERSION.tar.bz2
 
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"
@@ -68,53 +62,41 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xvf $CWD/$PRGNAM-$VERSION.tar.bz2
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
- \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 -o -perm 511 \) \
- -exec chmod 755 {} \; -o \
- \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
- -exec chmod 644 {} \;
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \; -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+ -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
-./configure \
+./waf configure \
   --prefix=/usr \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --sysconfdir=/etc \
-  --localstatedir=/var \
-  --with-html-dir=/usr/doc/$PRGNAM-$VERSION \
+  --configdir=/etc \
   --mandir=/usr/man \
-  --enable-optimize \
-  --with-default-tmpdir=/dev/shm \
-  --build=$ARCH-slackware-linux \
-  --host=$ARCH-slackware-linux
+  --docdir=/usr/doc/$PRGNAM-$VERSION
 
-make $NUMJOBS || make
-make install DESTDIR=$PKG
+./waf
 
-find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \
+./waf install \
+  --destdir=$PKG
+
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 find $PKG/usr/man -type f -exec gzip -9 {} \;
-for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a AUTHORS COPYING* README TODO $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a AUTHORS COPYING INSTALL NEWS README.md \
+  $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 
-SETCAP=yes
-# Only add capability stuff if not disabled:
-if [ "${SETCAP:-yes}" = "yes" ]; then
-  cat $CWD/setcap.sh >> $PKG/install/doinst.sh
-  # Only allow execution by audio group
-  chown root:audio $PKG/usr/bin/*
-  chmod 0750 $PKG/usr/bin/*
-fi
-rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

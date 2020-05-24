@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
    |-----handy-ruler------------------------------------------------------|
-six: six (Python 2 and 3 compatibility utilities)
-six:
-six: Six is a Python 2 and 3 compatibility library. It provides utility
-six: functions for smoothing over the differences between the Python
-six: versions with the goal of writing Python code that is compatible on
-six: both Python versions. See the documentation for more information on
-six: what is provided.
-six:
-six: Homepage: http://pypi.python.org/pypi/six/
-six:
-six:
+lv2: lv2 (LADSPA Version 2)
+lv2:
+lv2: LV2 is a standard for plugins and matching host applications,
+lv2: primarily targeted at audio processing and generation.
+lv2: LV2 is a successor to LADSPA, created to address the limitations
+lv2: of LADSPA which many applications have outgrown.
+lv2:
+lv2: Homepage: http://lv2plug.in
+lv2:
+lv2:
+lv2:

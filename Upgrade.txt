@@ -1,2 +1,3 @@
  Upgrading from 14.1 to 14.2  when released  or 14.1 to    for multi core usage.  you will need to rebuild qjacktl pulseaudio
  or any other programs you compiled against jack-connection-kit. 
+add puulseaudio and dependencies 

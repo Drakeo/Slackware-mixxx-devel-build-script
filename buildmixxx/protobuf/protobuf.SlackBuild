@@ -5,9 +5,10 @@
 # Written by M.Dinslage (daedra1980@gmail.com)
 
 PRGNAM=protobuf
-VERSION=${VERSION:-2.6.1}
+VERSION=${VERSION:-3.12.1}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
+CWD=$(pwd)
 
 PYTHON=${PYTHON:-yes}
 
@@ -19,7 +20,19 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://github.com/google/protobuf/releases/download/v2.6.1/protobuf-2.6.1.tar.bz2
+if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
+ echo $PRGNAM-$VERSION.tar.gz built
+else
+	git clone https://github.com/protocolbuffers/protobuf.git
+	cd $CWD/$PRGNAM
+	git checkout v$VERSION
+	git submodule update --init --recursive
+	cd $CWD
+	mv  $PRGNAM  $PRGNAM-$VERSION
+	tar cjvf  $PRGNAM-$VERSION.tar.gz $PRGNAM-$VERSION
+	rm -rf $PRGNAM-$VERSION
+fi
+
 
 NPROC=$(nproc)
 
@@ -48,7 +61,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.bz2
+tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -56,7 +69,7 @@ find -L . \
  -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
  -exec chmod 644 {} \;
-
+./autogen.sh
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 ./configure \
@@ -71,22 +84,25 @@ CXXFLAGS="$SLKCFLAGS" \
 make -j$NPROC || make
 make install DESTDIR=$PKG
 
+# Don't ship .la files:
+rm -f $PKG/{,usr/}lib${LIBDIRSUFFIX}/*.la
+
 # Install the python bindings
-if [ "${PYTHON:-yes}" = "yes" ]; then
-  cd python ; python setup.py install --root=$PKG ; cd ..
-fi
+cd python ; python3 setup.py install --root=$PKG ; cd ..
+cd python ; python setup.py install --root=$PKG ; cd ..
+
 
 find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
-  CHANGES.txt CONTRIBUTORS.txt  INSTALL.txt README.md \
+  CHANGES.txt CONTRIBUTORS.txt   README.md \
   $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
-rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

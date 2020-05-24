@@ -65,15 +65,24 @@ MIXXXROOT=$(pwd)
 # Loop for all packages
 for dir in \
   buildmixxx/set_rlimits \
+  buildmixxx/libebur128 \
+  buildmixxx/QUSB \
+  buildmixxx/libmodplug \
+  buildmixxx/hidapi \
   buildmixxx/faad2 \
+  buildmixxx/soundtouch \
   buildmixxx/libmp4v2 \
+  buildmixxx/serd \
+  buildmixxx/sord \
+  buildmixxx/lv2 \
+  buildmixxx/sratom \
+  buildmixxx/lilv \
   buildmixxx/pytz \
   buildmixxx/pysetuptools \
   buildmixxx/python-gflags \
-  buildmixxx/six \
   buildmixxx/google-apputils \
   buildmixxx/python-dateutil\
-  buildmixxx/jack-audio-connection-kit \
+  buildmixxx/jack2 \
   buildmixxx/protobuf \
   buildmixxx/chromaprint \
   buildmixxx/ladspa_sdk  \
@@ -82,6 +91,9 @@ for dir in \
   buildmixxx/portmidi \
   buildmixxx/vamp-plugin-sdk \
   buildmixxx/rubberband \
+  buildmixxx/pulseaudio \
+  buildmixxx/alsa-plugins \
+  buildmixxx/qjackctl \
   buildmixxx/mixxx \
   ; do
   # Get the package name
