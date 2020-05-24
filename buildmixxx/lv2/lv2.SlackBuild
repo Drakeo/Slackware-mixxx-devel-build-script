@@ -23,7 +23,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=lv2
-VERSION=${VERSION:-1.12.0}
+VERSION=${VERSION:-1.18.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -40,7 +40,7 @@ TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
-wget -c http://lv2plug.in/spec/lv2-1.12.0.tar.bz2
+wget -c http://lv2plug.in/spec/lv2-1.18.0.tar.bz2
 
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"
