@@ -26,11 +26,11 @@
 # No additional license terms added :)
 
 PRGNAM=ladspa_sdk
-VERSION=${VERSION:-1.13}
+VERSION=${VERSION:-1.15}
 BUILD=${BUILD:-4}
 TAG=${TAG:-_DRKo}
 
-wget --no-check-certificate -c "http://pkgs.fedoraproject.org/repo/pkgs/ladspa/ladspa_sdk_1.13.tgz/671be3e1021d0722cadc7fb27054628e/ladspa_sdk_1.13.tgz"
+wget --no-check-certificate -c "http://www.ladspa.org/download/ladspa_sdk_1.15.tgz"
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -64,9 +64,9 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM
+rm -rf ${PRGNAM}_${VERSION}
 tar xvf $CWD/${PRGNAM}_${VERSION}.tgz
-cd $PRGNAM
+cd ${PRGNAM}_${VERSION}
 chown -R root:root .
 chmod -R u+w,go+r-w,a-s .
 

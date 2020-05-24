@@ -25,8 +25,8 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=qjackctl
-VERSION=${VERSION:-0.4.0}
-BUILD=${BUILD:-2}
+VERSION=${VERSION:-0.6.2}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
 if [ -z "$ARCH" ]; then
@@ -42,7 +42,7 @@ TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
-wget -c https://s.mos6581.de/static/slackbuilds.org/sources/qjackctl-0.4.0.tar.gz
+wget -c http://downloads.sourceforge.net/project/qjackctl/qjackctl/$VERSION/$PRGNAM-$VERSION.tar.gz
 
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"
