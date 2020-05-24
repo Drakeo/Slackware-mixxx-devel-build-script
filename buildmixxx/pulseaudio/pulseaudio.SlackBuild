@@ -38,17 +38,7 @@ CWD=$(pwd)
 TMP=${TMP:-/tmp}
 PKG=$TMP/package-$PRGNAM
 
-if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
- echo $PRGNAM-$VERSION.tar.gz built
-else
-	git clone http://anongit.freedesktop.org/git/pulseaudio/pulseaudio.git
-	cd $CWD/$PRGNAM
-	git checkout $VERSION
-	cd $CWD
-	mv  $PRGNAM  $PRGNAM-$VERSION
-	tar cvf  $PRGNAM-$VERSION.tar.gz $PRGNAM-$VERSION
-	rm -rf $PRGNAM-$VERSION
-fi
+wget -c https://mirrors.kernel.org/slackware/slackware64-current/source/l/pulseaudio/pulseaudio-13.0.tar.xz
 
 if [ "$ARCH" = "i586" ]; then
   SLKCFLAGS="-O2 -march=i586 -mtune=i686"
@@ -64,20 +54,20 @@ else
   LIBDIRSUFFIX=""
 fi
 
-NUMJOBS=${NUMJOBS:-" -j7 "}
+NUMJOBS=${NUMJOBS:-" -j$(expr $(nproc) + 1) "}
 
 rm -rf $PKG
 mkdir -p $TMP $PKG
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz || exit 1
+tar xvf $CWD/$PRGNAM-$VERSION.tar.xz || exit 1
 cd $PRGNAM-$VERSION || exit 1
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 -o -perm 511 \) \
- -exec chmod 755 {} \; -o \
+ -exec chmod 755 {} \+ -o \
  \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
- -exec chmod 644 {} \;
+ -exec chmod 644 {} \+
 
 zcat $CWD/020_no-parallel-make.diff.gz | patch -p0 --verbose || exit 1
 zcat $CWD/030_posix-completion.diff.gz | patch -p0 --verbose || exit 1
@@ -100,35 +90,36 @@ zcat $CWD/pulseaudio-autostart.patch.gz | patch -p1 --verbose || exit 1
 # using the upstream default here.
 sed -i 's/; flat-volumes = yes/flat-volumes = no/g' ./src/daemon/daemon.conf.in
 
-export PKG_CONFIG_PATH=/usr/lib${LIBDIRSUFFIX}/pkgconfig
-
-CFLAGS="$SLKCFLAGS" \
-CXXFLAGS="$SLKCFLAGS" \
-./bootstrap.sh \
+# Configure, build, and install:
+export CFLAGS="$SLKCFLAGS"
+export CXXFLAGS="$SLKCFLAGS"
+mkdir meson-build
+cd meson-build
+meson setup \
   --prefix=/usr \
-  --libdir=/usr/lib${LIBDIRSUFFIX} \
+  --libdir=lib${LIBDIRSUFFIX} \
+  --libexecdir=/usr/libexec \
+  --bindir=/usr/bin \
+  --sbindir=/usr/sbin \
+  --includedir=/usr/include \
+  --datadir=/usr/share \
+  --mandir=/usr/man \
   --sysconfdir=/etc \
   --localstatedir=/var \
-  --mandir=/usr/man \
-  --disable-tcpwrap \
-  --enable-orc \
-  --disable-static \
-  --disable-hal-compat \
-  --disable-bluez4 \
-  --with-system-user=pulse \
-  --with-system-group=pulse \
-  --with-access-group=audio \
-  --with-bash-completion-dir=/usr/share/bash-completion/completions \
-  --build=$ARCH-slackware-linux || exit 1
+  --buildtype=release \
+  -Dorc=enabled \
+  -Dhal-compat=false \
+  -Dsystem_user="pulse" \
+  -Dsystem_group="pulse" \
+  -Daccess_group="audio" \
+  -Dbashcompletiondir="/usr/share/bash-completion/completions" \
+  .. || exit 1
+  "${NINJA:=ninja}" $NUMJOBS || exit 1
+  DESTDIR=$PKG $NINJA install || exit 1
+cd ..
 
-make $NUMJOBS check || make check || exit 1
-make $NUMJOBS || make || exit 1
-make install-strip DESTDIR=$PKG || exit 1
-
-# Remove .la files:
-rm -f $PKG/usr/lib${LIBDIRSUFFIX}/lib*.la
-rm -f $PKG/usr/lib${LIBDIRSUFFIX}/pulseaudio/lib*.la
-rm -f $PKG/usr/lib${LIBDIRSUFFIX}/pulse-*/modules/*.la
+# Strip binaries:
+find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null
 
 # Move config files to .new:
 for f in $( find $PKG/etc/pulse/ -type f ) ; do mv $f $f.new ; done
@@ -141,7 +132,7 @@ chmod 644 $PKG/etc/rc.d/rc.pulseaudio.new
 chown root:root $PKG/etc/rc.d/rc.pulseaudio.new
 
 # Compress and link manpages:
-find $PKG/usr/man -type f -exec gzip -9 {} \;
+find $PKG/usr/man -type f -exec gzip -9 {} \+
 for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
 
 # Install documentation:

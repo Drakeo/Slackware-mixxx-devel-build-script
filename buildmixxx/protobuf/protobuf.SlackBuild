@@ -5,7 +5,7 @@
 # Written by M.Dinslage (daedra1980@gmail.com)
 
 PRGNAM=protobuf
-VERSION=${VERSION:-3.1.2.1}
+VERSION=${VERSION:-3.12.1}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 CWD=$(pwd)
