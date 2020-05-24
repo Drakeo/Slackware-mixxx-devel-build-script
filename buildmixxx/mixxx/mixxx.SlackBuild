@@ -29,10 +29,10 @@ BUILD=${BUILD:-2}
 TAG=${TAG:-_DRKo}
 # set REV to QT Installed on system
  if [ -f  /etc/profile.d/qt4.sh ]; then
-     VERSION=${VERSION:-2.1}
+     VERSION=${VERSION:-2.2.2}
      echo Bulding for qt4  
  else
-     VERSION=${VERSION:-2.2}
+     VERSION=${VERSION:-2.2.4}
      echo Bulding development qt5
  fi
 
@@ -67,7 +67,7 @@ if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
 else
 	git clone https://github.com/mixxxdj/mixxx.git
 	cd $CWD/$PRGNAM
-	git checkout $VERSION
+	git checkout release-$VERSION
 	sed -i 's/Exec=sh -c "pasuspender -- mixxx || mixxx"/Exec=set_rlimits -r mixxx/g' res/linux/mixxx.desktop
 	cd $CWD
 	mv  $PRGNAM  $PRGNAM-$VERSION
@@ -136,7 +136,6 @@ cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 cat $CWD/doinst.sh > $PKG/install/doinst.sh
-
 
 #put the library in the right arch tree.use this hack till I  figure it out. 
 # mixxx will find it's libraries when moved to /usr/lib64.
