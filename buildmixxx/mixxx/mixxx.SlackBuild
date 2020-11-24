@@ -134,5 +134,3 @@ cat $CWD/doinst.sh > $PKG/install/doinst.sh
   
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-r$GITREV-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
-
-
