@@ -25,7 +25,7 @@
 
 PRGNAM=mixxx
 VERSION=${VERSION:-2.3}
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_DRKo}
 
 # number of jobs set to your cpu cores
@@ -54,12 +54,14 @@ TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
+set -e
+
 if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
  echo $PRGNAM-$VERSION.tar.gz built
 else
 	git clone https://github.com/mixxxdj/mixxx.git
 	cd $CWD/$PRGNAM
-	git checkout release-$VERSION
+	git checkout $VERSION
 	sed -i 's/Exec=sh -c "pasuspender -- mixxx -platform xcb || mixxx -platform xcb"/Exec=sh -c "set_rlimits -r mixxx -platform xcb"/g' res/linux/mixxx.desktop
 	cd $CWD
 	mv  $PRGNAM  $PRGNAM-$VERSION
@@ -67,10 +69,6 @@ else
 	rm -rf $PRGNAM-$VERSION
 fi
 
-
-cd $CWD/$PRGNAM
-git checkout master
-cd $CWD
 
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"
@@ -113,6 +111,7 @@ scons  -j$NPROC $OPTIMIZE \
   opus=1 \
   faad=1 \
   vamp=1 \
+  ffmpeg=1 \
   prefix=/usr \
   LIBIR=/usr/lib$LIBDIRSUFFIX \
   QTDIR=/usr/lib$LIBDIRSUFFIX \
@@ -131,9 +130,9 @@ cat $CWD/slack-desc > $PKG/install/slack-desc
 cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
  # Get the version
- GITREV=$(cat $TMP/$PRGNAM-$VERSION/.git/refs/heads/main | head -n 2 | cut -c1-7)
+ GITREV=$(cat $TMP/$PRGNAM-$VERSION/lin64_build/src/build.h |head -n 2 | tail -1 | cut -c20-23)
   
 cd $PKG
-/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-GITREV-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-r$GITREV-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
 
 
