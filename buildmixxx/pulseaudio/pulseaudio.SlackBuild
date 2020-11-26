@@ -23,8 +23,8 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 PRGNAM=pulseaudio
-VERSION=${VERSION:-13.0}
-BUILD=${BUILD:-2}
+VERSION=${VERSION:-14.0}
+BUILD=${BUILD:-1}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -38,7 +38,7 @@ CWD=$(pwd)
 TMP=${TMP:-/tmp}
 PKG=$TMP/package-$PRGNAM
 
-wget -c https://mirrors.kernel.org/slackware/slackware64-current/source/l/pulseaudio/pulseaudio-13.0.tar.xz
+wget -c https://mirrors.kernel.org/slackware/slackware64-current/source/l/pulseaudio/pulseaudio-$VERSION.tar.xz
 
 if [ "$ARCH" = "i586" ]; then
   SLKCFLAGS="-O2 -march=i586 -mtune=i686"
