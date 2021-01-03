@@ -18,7 +18,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://www.physics.adelaide.edu.au/~jwoithe/set_rlimits-1.3.0.tgz
+wget -c https://bitbucket.org/Drakeo/slackware-mixxx-devel-build-script/downloads/set_rlimits-1.3.0.tgz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
