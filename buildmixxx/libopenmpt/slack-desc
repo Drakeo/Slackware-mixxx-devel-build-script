@@ -1,0 +1,11 @@
+libopenmpt: libopenmpt (A module music decoding library based on OpenMPT)
+libopenmpt:
+libopenmpt: Libopenmpt is a cross-platform C++ and C library to decode tracked
+libopenmpt: music files (modules) into a raw PCM audio stream. It is based on
+libopenmpt: the player code of the OpenMPT project, which a descendant of the
+libopenmpt: original ModPlug Tracker (see https://openmpt.org/). The package
+libopenmpt: also includes openmpt123 binary, which is a cross-platform
+libopenmpt: command-line or terminal based module file player.
+libopenmpt:
+libopenmpt:
+libopenmpt: Packaged by Georgi D. Sotirov <gdsotirov@gmail.com>

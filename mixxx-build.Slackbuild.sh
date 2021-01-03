@@ -68,7 +68,6 @@ for dir in \
   buildmixxx/libebur128 \
   buildmixxx/hidapi \
   buildmixxx/QUSB \
-  buildmixxx/libmodplug \
   buildmixxx/faad2 \
   buildmixxx/soundtouch \
   buildmixxx/libmp4v2 \
@@ -89,6 +88,8 @@ for dir in \
   buildmixxx/libshout \
   buildmixxx/portaudio \
   buildmixxx/portmidi \
+  buildmixxx/libopenmpt \
+  buildmixxx/libopenmpt-modplug \
   buildmixxx/vamp-plugin-sdk \
   buildmixxx/rubberband \
   buildmixxx/pulseaudio \
