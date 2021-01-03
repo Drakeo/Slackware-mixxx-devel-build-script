@@ -23,7 +23,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=lilv
-VERSION=${VERSION:-0.24.6}
+VERSION=${VERSION:-0.24.8}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -60,7 +60,7 @@ if [ "${BINDINGS:-no}" = "no" ]; then
   bindings=""
 else
   bindings="--bindings"
-  SLKCFLAGS="$SLKCFLAGS -I/usr/lib$LIBDIRSUFFIX/python3.7/site-packages/numpy/core/include/"
+  SLKCFLAGS="$SLKCFLAGS -I/usr/lib$LIBDIRSUFFIX/python3.9/site-packages/numpy/core/include/"
 fi
 
 set -e

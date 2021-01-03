@@ -24,7 +24,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 PRGNAM=pulseaudio
 VERSION=${VERSION:-14.0}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-3}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -85,10 +85,8 @@ echo "X-MATE-Autostart-Phase=Initialization" >> src/daemon/pulseaudio.desktop.in
 # If autospawn isn't working, start-pulseaudio-x11 should start it manually:
 zcat $CWD/pulseaudio-autostart.patch.gz | patch -p1 --verbose || exit 1
 
-# Disable "flat volumes" to work more like ALSA's mixer.  POLA.
-# Have a google for "flat volumes" for more rationale on us not
-# using the upstream default here.
-sed -i 's/; flat-volumes = yes/flat-volumes = no/g' ./src/daemon/daemon.conf.in
+# Add support for meson to detect elogind:
+zcat $CWD/pulseaudio.elogind.meson.diff.gz | patch -p1 --verbose || exit 1
 
 # Configure, build, and install:
 export CFLAGS="$SLKCFLAGS"
