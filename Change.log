@@ -1,3 +1,787 @@
+commit 61917195678b0060a598342ce9548f87fcb88e5b
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun Jan 3 02:37:31 2021 -0600
+
+     use libopenmpt-modplug
+
+commit 7b673c19307895c33f62474f49115befe1a92461
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun Jan 3 02:34:40 2021 -0600
+
+    set gflags to python3.9
+
+commit 65511c550cc74dd864b05a50fb3f6f0339e8b064
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun Jan 3 02:33:00 2021 -0600
+
+    roll back libshout to 2.4.3
+
+commit d850c2bbb54717e38f8e1ec7a6a09b7198369220
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Jan 2 19:22:27 2021 -0600
+
+    upgrade libraries
+
+commit 79cd52dac2c6acbe8ae40c8c11341be02f5fd6ff
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Dec 26 15:57:04 2020 -0600
+
+    fix set revision
+
+commit 3d90c20661a24b84144be2d576f6f87f97da6f8e
+Author: Lord Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Dec 22 12:19:24 2020 +0000
+
+    qjackctl.SlackBuild set to 0.6.3 for qt 5.15.
+
+commit 8d3684011bf62d9b08b9dfc408e414aeab7f8de1
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Thu Nov 26 16:49:53 2020 -0600
+
+    update pulseaudio 14.0
+
+commit 4db903bf7ae6af819ccaabe5a6d1921886da3d90
+Merge: 2b9031d ae6e92a
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Nov 24 16:00:10 2020 -0600
+
+    merge with github
+
+commit 2b9031d0dc0087347302e018692a6fd5a35ba825
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Nov 24 15:51:43 2020 -0600
+
+     fix build for 2.3 beta
+
+commit ae6e92ae1923e5057399e01a80e7bf0ba61ec625
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Nov 24 15:13:30 2020 -0600
+
+    set git revision into package version for beta
+
+commit dd18ad4096fcfcd39315761c6a67f1521d63b205
+Author: Lord Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Nov 24 21:09:23 2020 +0000
+
+    set git revision into package version for beta
+
+commit 84bfc6e4a0ddcf1eb0ee301183f4b14e73958382
+Author: Lord Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Nov 24 20:30:01 2020 +0000
+
+    set to 2.3.0 beta
+
+commit 3b4f9065e9ef245649f4c1972d9e997a2d76ae13
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Nov 24 14:26:37 2020 -0600
+
+    set 2.3.0 beta
+
+commit c4fdb1a0bd994763dac63c362f3ad0b10615e384
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Nov 24 14:25:33 2020 -0600
+
+    Mixxx is built static lives in /usr/bin and /usr/share/
+
+commit 3d767596d0f91e25b0be3c984d29a390422161ed
+Author: Lord Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Nov 24 20:22:49 2020 +0000
+
+    Mixxx is built static lives in /usr/bin and /usr/share/
+
+commit 45609c3af270c65bf18e628d79ab2d3ddd4f9c1a
+Author: Lord Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Jun 9 16:24:19 2020 +0000
+
+    README  more update
+
+commit 8482c6b0e1673a0e5a73c071176fe65bc11e7ca3
+Author: Lord Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Jun 9 16:22:03 2020 +0000
+
+    README  update
+
+commit 86a5530d86f5fe1570e448fcf96c3b3284d3b40a
+Author: Lord Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun May 24 16:57:12 2020 +0000
+
+    README  fix
+
+commit 5af2fbbe93b375390f3a4c7b53030740e80aef02
+Author: Lord Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun May 24 16:55:59 2020 +0000
+
+    slackware build install
+
+commit ac0a1cc7fc0380c6148712f303a093b3029e780f
+Author: Lord Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun May 24 16:49:50 2020 +0000
+
+    update read me README.md
+
+commit 37db9a53810d1de22554480edb4dbf98fd1085c8
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun May 24 10:49:27 2020 -0500
+
+     fix mixxx-desktop wee use paulseaudio sync qjackctl scripts then mixxx runs real time with jack2
+
+commit e434724a14a3201c602965831bf08bbb0ab4bb56
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun May 24 08:48:59 2020 -0500
+
+    sync pulse with current slackware
+
+commit 2f68b292073f95056aa4fd673a11c52eb47de5d1
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun May 24 08:44:50 2020 -0500
+
+     only support python3 for dateutil
+
+commit e9faa4e149616422025f4b80f9c102401cb98163
+Merge: 7a751bc 02cd2ca
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun May 24 01:02:53 2020 -0500
+
+     merge with slackware-current
+
+commit 02cd2cafacb9c3b40f7138ba66aed89d102bf722
+Merge: 40c931a b82aee2
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun May 24 00:40:38 2020 -0500
+
+    meger with current kde5
+
+commit 40c931a238f541f735021ecf9722332efa7d1579
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun May 24 00:33:56 2020 -0500
+
+    current has qt5
+
+commit b82aee28fae39958e59bcbb338b9c6e4aca241d1
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun May 24 00:27:49 2020 -0500
+
+     slackware-current has qt5
+
+commit 11b38d7aa221fe10a24db6d1801a30c518a276ec
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun May 24 00:06:33 2020 -0500
+
+     fix asoundrc to users home
+
+commit afef3bfcd0382906c29f3cdae5f4f182f415d7ae
+Merge: 057629f e93678c
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat May 23 22:54:30 2020 -0500
+
+    merge with slackware-current-kde5
+
+commit e93678cce3879359fe5a831e4a4e3be810e61272
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat May 23 22:51:36 2020 -0500
+
+    fix proto and pulsaudio builds
+
+commit 9b4469b0654ccdcb90301511d0828964767b79e5
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat May 23 22:06:39 2020 -0500
+
+     force qmake-qt5
+
+commit 057629f171678a5e68d61866308efe887c59c081
+Merge: 415c4d9 86f52d5
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat May 23 21:48:00 2020 -0500
+
+    merge with current kde5
+
+commit 86f52d56e5a9c19536b0d39012976c5ca556cf6f
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat May 23 21:39:15 2020 -0500
+
+     upgrade libraries
+
+commit 9d04c7e6dd4bf82d5072a578f8ca23570162acfc
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat May 23 19:09:18 2020 -0500
+
+    upgrade builds
+
+commit ef270117109121b0caa838ee0a7aaf9a4cef5bed
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat May 23 16:22:18 2020 -0500
+
+    upgrade libraries
+
+commit 43376f24ab9231028667f2f2888f356f2d47aff6
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat May 23 13:10:25 2020 -0500
+
+    upgrade lad_sdk 1.1.5
+
+commit aef9b9ad81dc3dfc593593d26b8f4a94e0acf5dc
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat May 23 12:57:02 2020 -0500
+
+    upgrade jack2 1.9.14
+
+commit 939889ccac63b319c8dfaaa664674588a61fef8e
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat May 23 12:42:46 2020 -0500
+
+    upgrade faad2 2.8.8
+
+commit 680d00fd824c678ea6cf5a192b25e6759ecb44dd
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat May 23 12:20:35 2020 -0500
+
+     update to 1.2.2
+
+commit 549bd14b9e2a3b7d50eb02a3dfb07608c6261d11
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat May 23 12:13:11 2020 -0500
+
+    upgrade chromaprint to 1.5.0
+
+commit 415c4d94c554930e35d68f4ba06bfc964534e021
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri May 22 18:38:41 2020 -0500
+
+    chromaprint 1.5.0
+
+commit 40b2a33f77cff4198d08f5e49c5afafaca64eb09
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun Sep 15 10:40:24 2019 -0500
+
+    update pulseaudio 13.0
+
+commit 3539ee125003c9470b4d82108c97ea3a31a4ee07
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun Sep 15 10:37:47 2019 -0500
+
+    update pulseaudio 13.0
+
+commit 49a1ed6c7fe850026d548d15734eb0392ac41ece
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri Aug 23 13:56:43 2019 -0500
+
+    build slackware-current-kde5
+
+commit 7a751bc15225f5c384228ea1f0ac7ea4c7347d28
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri Aug 23 13:42:15 2019 -0500
+
+    update build script
+
+commit 0837432afa22f7cddc1284c93f047a696e3bb347
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri Aug 23 13:24:01 2019 -0500
+
+    tell mixxx to use installed vamp-sdk
+
+commit e6335c1d2c7f86659969562cefe33f0da7d85b2c
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun May 19 00:19:30 2019 -0500
+
+    qt5 build
+
+commit ff8ca7d7f3a574d2c3b2d9786ed692626c33fa3a
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat May 18 02:32:38 2019 -0500
+
+    remove six part of slackware-current
+
+commit 45890f7e1e9edfd78c72309f4906fb44b4b642d3
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri May 17 23:55:31 2019 -0500
+
+    Qjackctl how to
+
+commit f2ad7d33a0ab717d5569cd5a0628b84ec70d6c7f
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri May 17 22:50:26 2019 -0500
+
+    update build script
+
+commit 7f57c7a293d619187c083dfb69acad36943aa3f8
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri May 17 22:47:59 2019 -0500
+
+    remove libs that are already in current
+
+commit 484fb77aa65a0480ca04f826a52abc109cc6cb4d
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri May 17 22:32:00 2019 -0500
+
+    update slackware currentpre qt5
+
+commit d905a0c75bda13f7fef5b05fabdc3bb3663130a1
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Jan 15 20:38:26 2019 -0600
+
+    use sed latest vim hangs up
+
+commit ec91987f8b40266dd361ae0dbf83b739fab39ee7
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Jan 15 20:35:49 2019 -0600
+
+    use sed latest vim hangs up
+
+commit 61d6b6834fe2583942734460c8768c6f3ec3daed
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Dec 29 19:42:15 2018 -0600
+
+    jack make your own choice.
+
+commit 1b67ccd35188be93aaa859ae8e4940f6751d1992
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Dec 29 19:40:15 2018 -0600
+
+    current is a branch now.Not! Master
+
+commit aa5eee6c8232b308b9de862f980248a44128df55
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Dec 29 19:31:34 2018 -0600
+
+    merge with slackware-current
+
+commit e6649ec963ef8a833f7183a2209f5efcae4693b2
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Dec 29 19:23:37 2018 -0600
+
+    git edit readme
+
+commit 0fca3adada46713a6c0368b19c0ccbfe8551f030
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Dec 29 19:01:18 2018 -0600
+
+    remove builds that are already default slackware
+
+commit bfb8bd67eb028f5182a23ac1b13fa796067e5f5e
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Dec 29 18:57:37 2018 -0600
+
+    more remove .la
+
+commit 004d7e02d493fff8a17a473a5e62ef675ae3f805
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Dec 29 18:44:50 2018 -0600
+
+    use my repo fix 2017 fix for mp4v2
+
+commit 64a17b98a847988f860ae630528b55a710098ed5
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Dec 29 18:43:27 2018 -0600
+
+    start remove .la
+
+commit 4e8357aa7f03b88c9d0055104f2188bff4f3e5ca
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Dec 29 18:35:56 2018 -0600
+
+    lame  is part of slackware-14.2+ current
+
+commit 96866facaf08f847d84ec3aa9546c1f25ef0e9f9
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Dec 29 18:34:53 2018 -0600
+
+    speex  is part of slackware-14.2+ current
+
+commit cbebc9b957b15000fd8a3c812d4b033509a853bb
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Dec 29 18:34:03 2018 -0600
+
+    id3lib is part of slackware-14.2+ current
+
+commit edcf2e08f4f08063347e0dada7503f8a47a7bfb8
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Dec 29 18:32:45 2018 -0600
+
+    opus is part of slackware-14.2+ current
+
+commit 70d3e90622b1d8d9f61965974341779d65e6c2bc
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Dec 29 15:15:45 2018 -0600
+
+    add google-apputils
+
+commit c361d04ff7dd6bbbb3c22063263c9b6130545119
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun Dec 23 12:37:11 2018 -0600
+
+    jackd warning
+
+commit 62e26829a8ebefafb47c21ca50fa4b534d1e9296
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun Dec 23 11:44:50 2018 -0600
+
+    sync with 14.2
+
+commit df6d6646c88a53af6d8d75ec0fb136d266c7ba03
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Thu Dec 20 08:33:26 2018 -0600
+
+    update all stable libraries for 14.2 and current still hass issues
+
+commit babd3187671223492d020145b3994fc95b13b6d4
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Thu Dec 20 08:25:23 2018 -0600
+
+    set up build for stable and slack15 qt5 or alien bob qt5
+
+commit 436be08a9a48210209ba4563387531dfeef24cf8
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Thu Dec 20 08:21:10 2018 -0600
+
+    going to use vim to edit desktop during build all slackers have vim
+
+commit 77e516f870c07ced222d48b13e4cdcc7dbeb1e05
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Thu Dec 20 08:18:32 2018 -0600
+
+    remove qt5 build
+
+commit 069256edb3812d558dbcfd84439f1ee74c508b07
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Thu Dec 20 08:13:34 2018 -0600
+
+    remove qt5 build it will be part of slackware 15 qt5 in master
+
+commit 9f1092ae229d9c0968fe46dab8df4c1cc2b9eda0
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Dec 2 06:47:36 2017 -0600
+
+    examples fail to build turn OFF
+
+commit c7cc0b646a457f1a5752d95e3ec8398a2c851ad7
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Dec 2 06:39:51 2017 -0600
+
+    update current needs jack1
+
+commit 8252ea22b1451db1f49cb6513a8a7426db3243dc
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun Aug 14 11:46:05 2016 -0500
+
+    Add info for new slackware-14.2 branch
+
+commit 37d8d1128ff915444faee9ccfcf411cadcded14f
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun May 15 08:10:12 2016 -0500
+
+    set revision to master at this point seems stable enough.
+
+commit 21799f52d87e2ddcad1435d5b40706c681040f2e
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun May 8 06:13:49 2016 -0500
+
+    upgrade to 2.1.0-alpha-pre  revision 2511a95
+
+commit c2a606b9b232f7e9540a5cff1261f190712cb620
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Thu Apr 28 18:40:35 2016 -0500
+
+    update revision e59916c
+
+commit 58136106ebc12ec2168abfab5b366da9b02f8ec5
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun Apr 24 06:32:38 2016 -0500
+
+    update to rev 0dce2bc
+
+commit 9c7330d418342f43ff5d17a7adc37c0dfe58a6be
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun Apr 24 06:27:14 2016 -0500
+
+     update to rev 9a424c9
+
+commit e41a395b24599e4b927b6f448bc290dae4642ab5
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Wed Apr 13 00:53:13 2016 -0500
+
+     update rev 6de4192
+
+commit baa79026cc4cd26cac79bb93ac8804fa90700859
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Mon Mar 28 21:11:37 2016 -0500
+
+    latest stable build git checkout 9a424c9
+
+commit 132c8ba718363e53c1f47515788499b9247025ae
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri Mar 25 00:05:06 2016 -0500
+
+     update git checkout fe8b3a1
+
+commit 57f93b3654137bc35f9401749aff148c708e7ec1
+Author: Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Mar 22 14:08:06 2016 -0500
+
+    update qt5 build ;atest stable revision  f8632c7
+
+commit 2b2d00ced4ab2fdf925df2fc9ed312c16f92f698
+Author: Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Mar 22 13:48:31 2016 -0500
+
+    update to latest stable build revision  f8632c7
+
+commit 71a85b6caefd320038aac03465855ad30e0f9566
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Mar 19 13:56:07 2016 -0500
+
+    add qt5 build to mixxx for alien bob ktown kde5
+
+commit 864937ec5644f442679c6254d5894a0d17d12325
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Mar 19 08:14:50 2016 -0500
+
+    make sure we inter mixxx directory on first pull to change revision.
+
+commit 6b7454886db8ab441977b5c1047855501e72726c
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Mar 19 07:01:06 2016 -0500
+
+    reset back to master after compressing to tar
+
+commit 6cb4151ef47e68a0d1a5502141e4133d3de02df2
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Mar 19 06:23:45 2016 -0500
+
+    set back to native build for personel cpu.
+
+commit 916025d7f6ebbc77b0f2bcd9d5ab7e18a9e5518d
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Mar 19 06:11:09 2016 -0500
+
+    update change log
+
+commit ebdeb591b983f1e4aa7dc827a31d231abcafaa44
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sat Mar 19 05:09:38 2016 -0500
+
+    roll back to latest stable  2e11533 revision
+
+commit 758067d0e455a2828c18a9e71b597578370fc4e5
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri Mar 18 16:13:15 2016 -0500
+
+    edit install to show latest changes reminder to rebuild pulseaudio from slackware source when done.
+
+commit b7275124bfb8010213b32911b1e91b276bdb28be
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri Mar 18 15:58:44 2016 -0500
+
+    add upgrade text for 14.1 to 14.2
+
+commit 38ebd76c9e967f915e5e47a6b4ad8560891e1cb4
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri Mar 18 14:48:57 2016 -0500
+
+    prepare for slackware 14.2
+
+commit 88edb0d68cab46c6182c014b1a07269abb215262
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Wed Nov 18 20:34:52 2015 -0600
+
+    edit
+
+commit 7352e2cccced92d5a9d3d14f50bf5cc675e75b4b
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Wed Nov 18 20:33:53 2015 -0600
+
+    fix download repo
+
+commit 93ae7c5f868142ff97117313652c9098d429d977
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Wed Nov 18 20:30:53 2015 -0600
+
+    add the speexbuild patch
+
+commit 15b5430608de82ac1fb4f3b3d6947a519a25b11e
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Wed Nov 18 20:27:57 2015 -0600
+
+    fix down load repo
+
+commit 6c3c3b3cfdcbcebf0fdd84bfccc1a748cd00c90a
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Wed Nov 18 20:25:16 2015 -0600
+
+    stop if ffmpeg is not installed
+
+commit a68f4dcfab51d0ec0755d30f94601d4ccee30aca
+Author: Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Sun Oct 18 07:14:43 2015 -0500
+
+    fix desktop for slack
+
+commit e2792e723c9d2585672dbacef41a75d5735f871f
+Author: Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Thu Sep 3 07:37:37 2015 -0500
+
+    fix build version
+
+commit 99ac233cd2eb255f4e75b2f7c22cb61d09842e27
+Author: Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Wed Jul 22 20:51:23 2015 -0500
+
+    change name of development to 2.1
+
+commit 2b78bfaca7a274057b5172ddc0c3cd766224a409
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Jul 21 07:38:00 2015 -0500
+
+    set optimize to zero so people will read the readme.
+
+commit 54c994ab17faefb75f6dba5b2363a8c12f19f497
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Jul 21 07:34:21 2015 -0500
+
+    update desktop.dif
+
+commit 07a7191fc562c18b2516179dd460251d79311d16
+Author: Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Jun 30 11:36:47 2015 -0500
+
+    add the folders
+
+commit 9f9ee4df0527b90c7ed7562c1b567b581baee4b3
+Author: Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Jun 30 11:29:46 2015 -0500
+
+    must find jdk
+
+commit b72328e841553b346940de9095257965d366efde
+Author: Drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Jun 30 09:06:24 2015 -0500
+
+    update new libraries
+
+commit 96d8b09caf953885c4b8cfc19aa5a73865ca9cce
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Wed Apr 15 23:55:31 2015 -0500
+
+    need taglib 1.9 or higher from SLK current
+
+commit dd320f7b080f9b88d641677e12396858d5d34da4
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Wed Apr 15 23:22:39 2015 -0500
+
+    add info on install
+
+commit d5bafdf9df26591a7c1622151051198c627ec2c5
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri Oct 31 10:54:45 2014 -0500
+
+    update vamp-plugin-sdk
+
+commit 01a49607999c2f567715649a639b8b1529cfc434
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Sep 23 19:11:13 2014 -0500
+
+    set default buil doptimize=5
+
+commit 32a1454eea44475bf3af330f62d5c47de9712806
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Sep 23 18:56:10 2014 -0500
+
+    put libmixxxminimal.so with vamp
+
+commit 2f21eaf724efe7597d37fe8dbb1478ea0c13973f
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Sep 23 16:23:15 2014 -0500
+
+    add Slackware-README
+
+commit 713c68fb2294efe4e7d463311a8e134f966af1ce
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Sep 23 15:58:19 2014 -0500
+
+    add limits source
+
+commit bb1a963a1094351a5fc1f0ba10c35940482429d7
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Sep 23 15:53:21 2014 -0500
+
+    add set_rlimits
+
+commit 3efead38329dbf0e653c3d8f20a564ecb409e7cb
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri Aug 15 19:52:00 2014 -0500
+
+    set build tag correct
+
+commit 369181abe3cd1df224b91fa175597ef07323c43b
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri Aug 15 19:22:43 2014 -0500
+
+    make revison part of the pkg
+
+commit bbc2860ba733a53b49f63ffe4940dceb98db5598
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri Aug 15 19:21:23 2014 -0500
+
+    ignore the cloned repo
+
+commit 7c04ab3709380e4610d72928d9611aed3b3316e0
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri Aug 15 13:34:10 2014 -0500
+
+    added opus to the build
+
+commit 9e4678815b1b279e7fd7e94ac20fe0e9b2167d48
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri Aug 15 13:16:08 2014 -0500
+
+    give mixxx time to compress befor removing it.
+
+commit 37501d5787909265c6d0017df3bb8395dd8df3d8
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri Aug 15 07:20:43 2014 -0500
+
+    build mixxx from clone
+
+commit 9871672c0664ead2c47ba08e4eec6a508f5ac1bf
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri Aug 15 07:17:16 2014 -0500
+
+    add zip  gitignore
+
+commit 964d5c99e25eefda22eeef7911b1d296c9adc3ff
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Fri Aug 15 07:16:19 2014 -0500
+
+    add tarballs to gitignore
+
+commit d7275d0fed981bea8969bed6845f3a57dd960140
+Author: drakeo <flats_fixed@flatsfixedbicycle.com>
+Date:   Thu Aug 14 02:08:29 2014 -0500
+
+    add gitignore
+
+commit 253972effbf034fababde3fcbdea3cbf571cd291
+Author: drakeo <flats_fixed@flatsfixedbicycle.com>
+Date:   Thu Aug 14 01:48:16 2014 -0500
+
+    fix faad2 build script from sbo
+
+commit 035ddd7282959cd6919003836a4973e6c29862da
+Author: drakeo <flats_fixed@flatsfixedbicycle.com>
+Date:   Thu Aug 14 01:39:28 2014 -0500
+
+    fix usr/lib correct arch tree
+
+commit 20f694661582d5639ef32e79b3994315619ea92b
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Aug 12 20:19:02 2014 -0500
+
+    first commit
+
+commit e6d8e96aeec6089e96e08b401ceb5041366c39ef
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Tue Aug 12 19:50:47 2014 -0500
+
+    Initial commit
 
         modified:compile jobs per cpu cores   chromaprint/chromaprint.SlackBuild
         modified:compile jobs per cpu cores   faad2/faad2.SlackBuild
