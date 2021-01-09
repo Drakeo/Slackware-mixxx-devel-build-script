@@ -25,7 +25,7 @@
 PRGNAM=python-gflags
 VERSION=${VERSION:-3.1.2}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_drakeo}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -38,9 +38,9 @@ fi
 wget -c https://github.com/google/python-gflags/releases/download/3.1.2/python-gflags-3.1.2.tar.gz
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
 set -e
 

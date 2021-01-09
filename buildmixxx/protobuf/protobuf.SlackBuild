@@ -7,7 +7,7 @@
 PRGNAM=protobuf
 VERSION=${VERSION:-3.14.0}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_drakeo}
 CWD=$(pwd)
 
 PYTHON=${PYTHON:-yes}
@@ -37,9 +37,9 @@ fi
 NPROC=$(nproc)
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"

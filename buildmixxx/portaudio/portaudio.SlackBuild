@@ -27,7 +27,7 @@ PRGNAM=portaudio
 SRCNAM=pa
 VERSION=${VERSION:-v190600_20161030}
 BUILD=${BUILD:-2}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_drakeo}
 
 
 if [ -z "$ARCH" ]; then
@@ -43,9 +43,9 @@ wget -c http://www.portaudio.com/archives/pa_stable_v190600_20161030.tgz
 NPROC=$(nproc)
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
 DOCS="LICENSE.txt README.txt"
 

@@ -25,7 +25,7 @@
 PRGNAM=google-apputils
 VERSION=${VERSION:-0.4.2}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_drakeo}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -38,9 +38,9 @@ fi
 wget -c https://distfiles.macports.org/py-google-apputils/google-apputils-0.4.2.tar.gz
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
 set -e
 

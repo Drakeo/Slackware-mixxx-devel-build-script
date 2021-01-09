@@ -26,7 +26,7 @@ PRGNAM=libopenmpt-modplug
 VERSION=${VERSION:-0.8.9.0}
 SRCNAME=$PRGNAM-$VERSION-openmpt1
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_drakeo}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -41,9 +41,9 @@ wget -c https://lib.openmpt.org/files/libopenmpt-modplug/libopenmpt-modplug-0.8.
 NPROC=$(nproc)
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"

@@ -8,7 +8,7 @@
 PRGNAM=libshout	
 VERSION=${VERSION:-2.4.3}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_DRKo}
+TAG=${TAG:-_drakeo}
 
 
 wget -c "http://downloads.xiph.org/releases/libshout/libshout-$VERSION.tar.gz"
@@ -27,9 +27,9 @@ if [ -z "$ARCH" ]; then
 fi
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"

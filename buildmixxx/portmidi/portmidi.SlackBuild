@@ -27,7 +27,7 @@
 PRGNAM=portmidi
 VERSION=${VERSION:-217}
 BUILD=${BUILD:-4}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_drakeo}
 NPROC=$(nproc)
 
 if [ -z "$ARCH" ]; then
@@ -41,9 +41,9 @@ fi
 wget -c http://downloads.sourceforge.net/portmedia/portmidi-src-217.zip
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"

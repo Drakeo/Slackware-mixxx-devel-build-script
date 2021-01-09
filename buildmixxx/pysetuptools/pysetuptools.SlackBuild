@@ -23,7 +23,7 @@
 PRGNAM=pysetuptools
 VERSION=${VERSION:-51.1.1}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_drakeo}
 
 SRCNAM=setuptools
 
@@ -38,9 +38,9 @@ fi
 wget -c https://files.pythonhosted.org/packages/94/23/e9e3d96500c063129a19feb854efbb01e6ffe7d913f1da8176692418ab8e/setuptools-51.1.1.tar.gz
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=${PKG:-$TMP/package-$SRCNAM}
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
 set -eu
 

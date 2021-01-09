@@ -8,7 +8,7 @@
 PKGNAME=set_rlimits
 VERSION=${VERSION:-1.3.0}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_drakeo}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -21,9 +21,9 @@ fi
 wget -c https://bitbucket.org/Drakeo/slackware-mixxx-devel-build-script/downloads/set_rlimits-1.3.0.tgz
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PKGNAME
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"
