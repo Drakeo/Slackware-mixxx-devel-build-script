@@ -25,7 +25,7 @@
 
 PRGNAM=mixxx
 VERSION=${VERSION:-2.3}
-BUILD=${BUILD:-3}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_drakeo}
 
 # number of jobs set to your cpu cores
@@ -53,6 +53,8 @@ if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
 else
 	git clone https://github.com/mixxxdj/mixxx.git
 	cd $CWD/$PRGNAM
+	git fetch --all
+	git pull --all
 	git checkout $VERSION
 	sed -i 's/Exec=sh -c "pasuspender -- mixxx -platform xcb || mixxx -platform xcb"/Exec=sh -c "set_rlimits -r mixxx -platform xcb"/g' res/linux/mixxx.desktop
 	cd $CWD
@@ -111,7 +113,10 @@ cd ..
 find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
-mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
+mkdir -p $PKG/etc
+mv $PKG/usr/share/mixxx/udev $PKG/etc/udev
+mv $PKG/usr/share/doc/mixxx $PKG/usr/share/doc/$PRGNAM-$VERSION
+mv $PKG/usr/share/doc $PKG/usr/
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
