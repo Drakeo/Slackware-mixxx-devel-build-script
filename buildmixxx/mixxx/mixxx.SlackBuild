@@ -26,7 +26,7 @@
 PRGNAM=mixxx
 VERSION=${VERSION:-2.1.8} 
 BUILD=${BUILD:-2}
-TAG=${TAG:-_DRKo}
+TAG=${TAG:-_drakeo}
 
 # number of jobs set to your cpu cores
 NPROC=$(nproc)
@@ -39,7 +39,7 @@ NPROC=$(nproc)
 #  6  K8/Opteron/AMD64
 #  7  K8/Opteron/AMD64 w/ SSE3  my default
 #
-OPTIMIZE=${OPTIMIZE:-" optimize=portable"}
+OPTIMIZE=${OPTIMIZE:-"optimize=portable"}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
