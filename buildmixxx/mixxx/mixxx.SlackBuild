@@ -24,17 +24,9 @@
 
 
 PRGNAM=mixxx
-VERSION=${VERSION:-2.1}
+VERSION=${VERSION:-2.1.8} 
 BUILD=${BUILD:-2}
 TAG=${TAG:-_DRKo}
-# set REV to QT Installed on system
- if [ -f  /etc/profile.d/qt4.sh ]; then
-     REV=2.1 
-     echo Bulding for qt4  
- else
-     REV=master
-     echo Bulding development qt5
- fi
 
 # number of jobs set to your cpu cores
 NPROC=$(nproc)
@@ -47,7 +39,7 @@ NPROC=$(nproc)
 #  6  K8/Opteron/AMD64
 #  7  K8/Opteron/AMD64 w/ SSE3  my default
 #
-OPTIMIZE=${OPTIMIZE:-" optimize=native "}
+OPTIMIZE=${OPTIMIZE:-" optimize=portable"}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -58,16 +50,18 @@ if [ -z "$ARCH" ]; then
 fi
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
 if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
  echo $PRGNAM-$VERSION.tar.gz built
 else
 	git clone https://github.com/mixxxdj/mixxx.git
 	cd $CWD/$PRGNAM
-	git checkout $VERSION
+	git fetch --all
+	git pull --all
+	git checkout release-$VERSION
 	sed -i 's/Exec=sh -c "pasuspender -- mixxx || mixxx"/Exec=set_rlimits -r mixxx/g' res/linux/mixxx.desktop
 	cd $CWD
 	mv  $PRGNAM  $PRGNAM-$VERSION

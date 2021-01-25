@@ -32,7 +32,7 @@ PRGNAM=speex
 VERSION=${VERSION:-1.2rc2}
 DSPVERSION=1.2rc3
 BUILD=${BUILD:-4}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_drakeo}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -46,9 +46,9 @@ wget -c http://downloads.xiph.org/releases/speex/speex-1.2rc2.tar.gz
 wget -c http://downloads.xiph.org/releases/speex/speexdsp-1.2rc3.tar.gz
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 NPROC=$(nproc)
 
 if [ "$ARCH" = "i486" ]; then

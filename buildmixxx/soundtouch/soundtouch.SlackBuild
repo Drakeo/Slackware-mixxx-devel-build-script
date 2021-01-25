@@ -25,7 +25,7 @@
 PRGNAM=soundtouch
 VERSION=${VERSION:-2.1.2}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_drakeo}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -36,9 +36,9 @@ if [ -z "$ARCH" ]; then
 fi
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
 if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
  echo $PRGNAM-$VERSION.tar.gz built
@@ -109,6 +109,8 @@ cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

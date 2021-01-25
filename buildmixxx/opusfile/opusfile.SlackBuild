@@ -25,7 +25,7 @@
 PRGNAM=opusfile
 VERSION=${VERSION:-0.11}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_drakeo}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -36,15 +36,17 @@ if [ -z "$ARCH" ]; then
 fi
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
 if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
  echo $PRGNAM-$VERSION.tar.gz built
 else
-	git clone https://git.xiph.org/opusfile.git
+	git clone https://github.com/xiph/opusfile.git
 	cd $CWD/$PRGNAM
+	git fetch --all
+	git pull --all
 	git checkout v$VERSION
 	cd $CWD
 	mv  $PRGNAM  $PRGNAM-$VERSION

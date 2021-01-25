@@ -57,7 +57,7 @@ fi
 INST=1
 
 # This is where all the compilation and final results will be placed
-TMP=${TMP:-/tmp}
+TMP=${TMP:-/tmp/mixxx/pkgs}
 
 # This is the original directory where you started this script
 MIXXXROOT=$(pwd)

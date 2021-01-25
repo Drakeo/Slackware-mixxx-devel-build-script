@@ -23,7 +23,7 @@
 PRGNAM=pysetuptools
 VERSION=${VERSION:-17.0}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_drakeo}
 
 SRCNAM=setuptools
 
@@ -38,9 +38,9 @@ fi
 wget -c https://pypi.python.org/packages/source/s/setuptools/setuptools-17.0.tar.gz
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=${PKG:-$TMP/package-$SRCNAM}
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
 set -eu
 

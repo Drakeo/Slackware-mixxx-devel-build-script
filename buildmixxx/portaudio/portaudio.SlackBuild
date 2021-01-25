@@ -25,9 +25,9 @@
 
 PRGNAM=portaudio
 SRCNAM=pa
-VERSION=${VERSION:-v19_20140130}
+VERSION=${VERSION:-v190600_20161030}
 BUILD=${BUILD:-2}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_drakeo}
 
 
 if [ -z "$ARCH" ]; then
@@ -38,14 +38,14 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://www.portaudio.com/archives/pa_stable_v19_20140130.tgz
+wget -c http://www.portaudio.com/archives/pa_stable_v190600_20161030.tgz
 
 NPROC=$(nproc)
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
 DOCS="LICENSE.txt README.txt"
 
@@ -86,6 +86,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --mandir=/usr/man \
   --sysconfdir=/etc \
   --localstatedir=/var \
+  --enable-cxx \
   --build=$ARCH-slackware-linux
 
 make
@@ -100,6 +101,8 @@ cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

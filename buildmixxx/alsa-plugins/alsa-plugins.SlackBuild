@@ -28,13 +28,16 @@ BUILD=${BUILD:-2}
 
 NUMJOBS=${NUMJOBS:-" -j$(expr $(nproc) + 1) "}
 
-TMP=${TMP:-/tmp}
+TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
  echo $PRGNAM-$VERSION.tar.gz built
 else
 	git clone http://git.alsa-project.org/http/alsa-plugins.git
 	cd $CWD/$PRGNAM
+	git fetch --all
+	git pull --all
 	git checkout v$VERSION
 	cd $CWD
 	mv  $PRGNAM  $PRGNAM-$VERSION
@@ -125,4 +128,4 @@ mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 
 cd $PKG
-/sbin/makepkg -l y -c n $TMP/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.tgz
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.tgz

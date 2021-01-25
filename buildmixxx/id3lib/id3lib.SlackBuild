@@ -27,7 +27,7 @@
 PRGNAM=id3lib
 VERSION=${VERSION:-3.8.3}
 BUILD=${BUILD:-2}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_drakeo}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -40,9 +40,9 @@ fi
 wget -c http://downloads.sourceforge.net/id3lib/id3lib-3.8.3.tar.gz
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
 NPROC=$(nproc)
 

@@ -16,9 +16,9 @@
 # - Fix the x86_64 lib path in the .pc files, too
 
 PRGNAM=vamp-plugin-sdk
-VERSION=${VERSION:-2.8.0}
+VERSION=${VERSION:-2.9.0}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_drakeo}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -28,14 +28,14 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://code.soundsoftware.ac.uk/attachments/download/2450/vamp-plugin-sdk-2.8.0.tar.gz
+wget -c --no-check-certificate https://code.soundsoftware.ac.uk/attachments/download/2588/vamp-plugin-sdk-2.9.0.tar.gz
 
 NPROC=$(nproc)
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-/tmp}
+OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"
@@ -103,6 +103,8 @@ cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
