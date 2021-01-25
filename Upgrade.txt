@@ -1,3 +1,18 @@
- Upgrading from 14.1 to 14.2  when released  or 14.1 to    for multi core usage.  you will need to rebuild qjacktl pulseaudio
+For slackware14.2+ aka Slackware-15.0 Slackware-current the pulseaudio
+and alsa-plugins builds are part of the build. 
+
+I try to keep in sync with Slackware pretty much you may want to
+blacklist pulseaudio and alsa-plugins.
+
+For 2.2 or older read below
+ Upgrading from 14.1 to 14.2  when released  or 14.1 to  for multi core usage. 
+  You will need to rebuild qjacktl pulseaudio
  or any other programs you compiled against jack-connection-kit. 
 add puulseaudio and dependencies 
+
+Friendly note you may want to recompile Pipewire rebuild it with
+Jackd ability same for SSR Simple Screen Recorder.
+This way you can record and stream to websites at the same time.
+
+Or you can just use my jack-pulse-sink https://github.com/Drakeo/jack-pulse-sink
+ That is already part of my MIXXX-Build.
