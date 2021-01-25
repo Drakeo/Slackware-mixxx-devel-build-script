@@ -1,8 +1,8 @@
 Slackware-mixxx-devel-build-script
 ==================================
 ~~~
-This is master branch will build slackware current slackware current kde5 
-slackware-14.1, slackware-14.2, slackware-current slackware-current-kde5
+This is master branch will build slackware current slackware-current 
+slackware-14.1, slackware-14.2, 
 then run git checkout slackware-14.1
 or run git checkout slackware-14.2
 or run git checkout slackware-current
@@ -81,26 +81,6 @@ Mixxx has the following dependencies:
 NOTE: If you want JACK support in Mixxx, make sure you
 compile PortAudio-v19 with JACK support first.
 
-Mixxx's build system is now SCons as of Mixxx 1.6.0.
-To compile Mixxx using SCons, run:
-
-   $ scons
-
-SCons does both dependency checking and building, so it will
-tell you if you're missing any of the dependencies listed above.
-It's also possible to specify a prefix path and additional
-build flags, for example:
-
-   $ scons prefix=/usr
-
-To install Mixxx after compilation, run:
-
-   $ sudo scons prefix=/usr install
-
-A full list of scons flags is available by running:
-
-   $ scons --help
-
 WARNING: We do not recommend building Mixxx with any
 flags other than the defaults if you are going to use Mixxx
 for live performance. Features that are disabled by default
@@ -108,7 +88,7 @@ may not compile or may be unstable. Be forewarned.
 
 More detailed compiling instructions are available for your
 platform on our wiki:
-    http://www.mixxx.org/wiki/
+    https://github.com/mixxxdj/mixxx/wiki
 
 * HERCULES DJ CONSOLE USERS ON LINUX ***********************
 
@@ -118,20 +98,7 @@ from: http://www.hercules.com/
 
 * REINSTALLING MIXXX ***************************************
 
-Linux users may need to manually remove their Mixxx
-installation directory if they need to reinstall. (This does
-not apply when reinstalling from a DEB package.) Mixxx's
-share directory can be removed by running:
 
-   $ sudo rm -rf /usr/local/share/mixxx/
-
-or
-
-   $ sudo rm -rf /usr/share/mixxx/
-
-* USAGE ****************************************************
-Please see the manual, included in this directory,
-Mixxx-Manual.pdf or at:
 
     http://www.mixxx.org/manual
 
@@ -148,10 +115,6 @@ library may be obtained from:
 
     http://qt-project.org/downloads
 
-* Microsoft Runtimes ***************************************
-On Microsoft platforms, Mixxx may come with runtime dlls
-copyright of Microsoft. These are distributed for the
-purpose of allowing Mixxx to run only as per the license
-agreement for Visual Studio 2005.
+
 
     
