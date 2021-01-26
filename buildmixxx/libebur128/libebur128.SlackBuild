@@ -34,6 +34,8 @@ if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
 else
 	git clone https://github.com/jiixyj/libebur128.git
 	cd $CWD/$PRGNAM
+	git fetch --all
+	git pull --all
 	git checkout v$VERSION
 	cd $CWD
 	mv  $PRGNAM  $PRGNAM-$VERSION

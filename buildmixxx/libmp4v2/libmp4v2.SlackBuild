@@ -60,6 +60,8 @@ if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
 else
 	git clone https://github.com/Drakeo/mp4v2.git $PRGNAM-$VERSION
 	cd $CWD/$PRGNAM-$VERSION
+	git fetch --all
+	git pull --all
 	git checkout Release-ThirdParty-MP4v2-$VERSION
 	cd $CWD
 	tar cvf  $PRGNAM-$VERSION.tar.gz $PRGNAM-$VERSION

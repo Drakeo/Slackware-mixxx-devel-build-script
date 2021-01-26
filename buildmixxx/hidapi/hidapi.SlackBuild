@@ -47,6 +47,8 @@ if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
 else
 	git clone https://github.com/libusb/hidapi.git
 	cd $CWD/$PRGNAM
+	git fetch --all
+	git pull --all
 	git checkout $PRGNAM-$VERSION
 	cd $CWD
 	mv  $PRGNAM  $PRGNAM-$VERSION

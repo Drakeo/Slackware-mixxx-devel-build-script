@@ -53,6 +53,8 @@ if [ -f $CWD/$PRGNAM-$VERSION.tar.xz ]; then
 else
 	git clone https://github.com/jackaudio/jack2.git
 	cd $CWD/$PRGNAM
+	git fetch --all
+	git pull --all
 	git checkout v$VERSION
 	cd $CWD
 	mv  $PRGNAM  $PRGNAM-$VERSION
