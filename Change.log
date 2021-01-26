@@ -1,3 +1,9 @@
+commit d90b2f2357af9b976f0ed34e92ff5f984adbeb33ESC
+Author: drakeo <flats_fixed@flatsfixedbicycles.com>
+Date:   Mon Jan 25 20:16:12 2021 -0600
+     remove pysetuptools
+     use slackware native python-setuptools
+
 commit 61917195678b0060a598342ce9548f87fcb88e5b
 Author: drakeo <flats_fixed@flatsfixedbicycles.com>
 Date:   Sun Jan 3 02:37:31 2021 -0600
