@@ -77,7 +77,6 @@ for dir in \
   buildmixxx/sratom \
   buildmixxx/lilv \
   buildmixxx/pytz \
-  buildmixxx/pysetuptools \
   buildmixxx/python-gflags \
   buildmixxx/google-apputils \
   buildmixxx/python-dateutil\
