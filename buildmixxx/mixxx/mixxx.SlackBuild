@@ -24,7 +24,7 @@
 
 
 PRGNAM=mixxx
-VERSION=${VERSION:-2.1.8} 
+VERSION=${VERSION:-2.1.8}
 BUILD=${BUILD:-2}
 TAG=${TAG:-_drakeo}
 
@@ -143,7 +143,7 @@ if [ "$ARCH" = "x86_64" ]; then
 fi
 
  # Get the version
- GITREV=$(cat /tmp/SBo/mixxx-$REV/src/build.h | head -n 2 | tail -1 | cut -c20-23)
+ GITREV=$(cat /tmp/mixxx/$PRGNAM-$VERSION/src/build.h | head -n 2 | tail -1 | cut -c20-23)
   
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
