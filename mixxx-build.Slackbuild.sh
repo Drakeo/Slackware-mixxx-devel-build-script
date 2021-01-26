@@ -64,37 +64,8 @@ MIXXXROOT=$(pwd)
 
 # Loop for all packages
 for dir in \
-  buildmixxx/set_rlimits \
-  buildmixxx/speex \
-  buildmixxx/libebur128 \
-  buildmixxx/QUSB \
-  buildmixxx/opus \
-  buildmixxx/opusfile \
-  buildmixxx/hidapi \
-  buildmixxx/faad2 \
-  buildmixxx/soundtouch \
-  buildmixxx/libmp4v2 \
-  buildmixxx/id3lib \
-  buildmixxx/pytz \
-  buildmixxx/pysetuptools \
-  buildmixxx/python-gflags \
-  buildmixxx/six \
-  buildmixxx/google-apputils \
-  buildmixxx/python-dateutil\
-  buildmixxx/jack2 \
-  buildmixxx/lame \
-  buildmixxx/protobuf \
-  buildmixxx/chromaprint \
-  buildmixxx/ladspa_sdk  \
-  buildmixxx/libshout \
-  buildmixxx/portaudio \
-  buildmixxx/portmidi \
-  buildmixxx/vamp-plugin-sdk \
-  buildmixxx/rubberband \
   buildmixxx/pulseaudio \
   buildmixxx/alsa-plugins \
-  buildmixxx/qjackctl \
-  buildmixxx/mixxx \
   ; do
   # Get the package name
   package=$(echo $dir | cut -f2- -d /) 
@@ -117,7 +88,7 @@ for dir in \
   # The real build starts here
   sh ${package}.SlackBuild || exit 1
   if [ "$INST" = "1" ]; then
-    PACKAGE="${package}-$version-*.tgz"
+    PACKAGE="${package}-$version-*.t?z"
     if [ -f $TMP/$PACKAGE ]; then
       upgradepkg --install-new --reinstall $TMP/$PACKAGE
     else
