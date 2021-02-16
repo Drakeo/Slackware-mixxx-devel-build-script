@@ -24,7 +24,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 PRGNAM=pulseaudio
 VERSION=${VERSION:-14.2}
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-3}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
