@@ -68,9 +68,9 @@ for dir in \
   buildmixxx/libebur128 \
   buildmixxx/hidapi \
   buildmixxx/QUSB \
-  buildmixxx/faad2 \
   buildmixxx/soundtouch \
   buildmixxx/libmp4v2 \
+  buildmixxx/faad2 \
   buildmixxx/serd \
   buildmixxx/sord \
   buildmixxx/lv2 \
