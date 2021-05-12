@@ -5,7 +5,7 @@
 # Written by M.Dinslage (daedra1980@gmail.com)
 
 PRGNAM=protobuf
-VERSION=${VERSION:-3.14.0}
+VERSION=${VERSION:-3.16.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_drakeo}
 CWD=$(pwd)
