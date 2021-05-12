@@ -25,8 +25,8 @@
 
 PRGNAM=portaudio
 SRCNAM=pa
-VERSION=${VERSION:-v190600_20161030}
-BUILD=${BUILD:-2}
+VERSION=${VERSION:-v190700_20210406}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_drakeo}
 
 
@@ -38,7 +38,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://www.portaudio.com/archives/pa_stable_v190600_20161030.tgz
+wget -c http://files.portaudio.com/archives/pa_stable_v190700_20210406.tgz
 
 NPROC=$(nproc)
 
@@ -96,7 +96,7 @@ find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | gr
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a LICENSE.txt README.configure.txt README.txt $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a LICENSE.txt README.configure.txt README.md $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
