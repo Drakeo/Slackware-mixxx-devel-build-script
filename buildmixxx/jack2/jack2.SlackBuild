@@ -31,7 +31,7 @@
 # - i486 => i586.
 
 PRGNAM=jack2
-VERSION=${VERSION:-1.9.14}
+VERSION=${VERSION:-1.9.18}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_drakeo}
 
