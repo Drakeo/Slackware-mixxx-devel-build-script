@@ -125,7 +125,7 @@ cat $CWD/slack-desc > $PKG/install/slack-desc
 cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
  # Get the version
- GITREV=$(cat $TMP/$PRGNAM-$VERSION/build/src/version.h | grep GIT_DESCRIBE | cut  -b27-35)
+ GITREV=$(cat $TMP/$PRGNAM-$VERSION/build/src/gitinfo.h | grep GIT_DESCRIBE | cut  -b27-35)
   
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$GITREV-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
