@@ -23,7 +23,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=libopenmpt
-VERSION=${VERSION:-0.5.4}
+VERSION=${VERSION:-0.5.8}
 SRCNAME=$PRGNAM-$VERSION+release.autotools
 BUILD=${BUILD:-1}
 TAG=${TAG:-_drakeo}
@@ -36,7 +36,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-0.5.4+release.autotools.tar.gz
+wget -c https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-0.5.8+release.autotools.tar.gz
 
 NPROC=$(nproc)
 
