@@ -43,6 +43,7 @@ set -e
 
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
+mkdir -p $TMP/pkgs
 cd $TMP
 rm -rf $PKGNAME-$VERSION
 tar xvf $CWD/$PKGNAME-$VERSION.tgz

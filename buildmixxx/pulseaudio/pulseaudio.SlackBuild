@@ -39,7 +39,19 @@ TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
-wget -c https://mirrors.kernel.org/slackware/slackware64-current/source/l/pulseaudio/pulseaudio-$VERSION.tar.xz
+#wget -c https://mirrors.kernel.org/slackware/slackware64-current/source/l/pulseaudio/pulseaudio-$VERSION.tar.xz
+if [ -f $CWD/$PRGNAM-$VERSION.tar.xz ]; then
+ echo $PRGNAM-$VERSION.tar.gz built
+else
+	git clone https://github.com/Drakeo/$PRGNAM.git
+	cd $CWD/$PRGNAM
+	git fetch
+	git checkout $VERSION
+	cd $CWD
+	mv  $PRGNAM  $PRGNAM-$VERSION
+	tar cJvf  $PRGNAM-$VERSION.tar.xz $PRGNAM-$VERSION
+	rm -rf $PRGNAM-$VERSION
+fi
 
 if [ "$ARCH" = "i586" ]; then
   SLKCFLAGS="-O2 -march=i586 -mtune=i686"
@@ -59,9 +71,10 @@ NUMJOBS=${NUMJOBS:-" -j$(expr $(nproc) + 1) "}
 
 rm -rf $PKG
 mkdir -p $TMP $PKG
+mkdir -p $TMP/pkgs
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.xz || exit 1
+tar xvf $CWD/$PRGNAM-$VERSION.tar.?z || exit 1
 cd $PRGNAM-$VERSION || exit 1
 chown -R root:root .
 find -L . \
