@@ -23,7 +23,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=faad2
-VERSION=${VERSION:-2.8.8}
+VERSION=${VERSION:-2.10.0}
 BUILD=${BUILD:-2}
 TAG=${TAG:-_drakeo}
 
@@ -35,7 +35,19 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://sourceforge.net/projects/faac/files/faad2-src/faad2-2.8.0/faad2-2.8.8.tar.gz
+if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
+ echo $PRGNAM-$VERSION.tar.gz built
+else
+	git clone https://github.com/knik0/faad2.git
+	cd $PRGNAM
+	git fetch --all
+	git pull --all
+	git checkout 2_10_0
+	cd ../
+	mv  $PRGNAM  $PRGNAM-$VERSION
+	tar cvf  $PRGNAM-$VERSION.tar.gz $PRGNAM-$VERSION
+	rm -rf $PRGNAM-$VERSION
+fi
 
 NPROC=$(nproc)
 
@@ -72,7 +84,7 @@ find -L . \
   -o -perm 511 \) -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
-
+autoreconf -vfi
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 ./configure \
@@ -81,6 +93,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --mandir=/usr/man \
   --enable-shared=yes \
   --enable-static=no \
+  --with-mp4v2 \
   --build=$ARCH-slackware-linux
 
 # This option is supposed to enable support for decoding Digital Radio Mondiale,
