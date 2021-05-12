@@ -21,7 +21,7 @@
 # - add man page
 
 PRGNAM=rubberband
-VERSION=${VERSION:-1.8.2}
+VERSION=${VERSION:-1.9.1}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_drakeo}
 
@@ -33,7 +33,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://breakfastquay.com/files/releases/rubberband-1.8.2.tar.bz2
+wget -c https://breakfastquay.com/files/releases/rubberband-1.9.1.tar.bz2
 
 NPROC=$(nproc)
 
@@ -55,7 +55,7 @@ else
   SLKCFLAGS="-O2"
   LIBDIRSUFFIX=""
 fi
-
+NUMJOBS=${NUMJOBS:-" -j$(expr $(nproc) + 1) "}
 set -e
 
 rm -rf $PKG
@@ -72,31 +72,32 @@ find -L . \
  -exec chmod 644 {} \;
 
 # Fixup libdir on x86_64
-sed -i "s,\<lib\>,lib$LIBDIRSUFFIX,g" Makefile.in *.pc.in
+#sed -i "s,\<lib\>,lib$LIBDIRSUFFIX,g" Makefile.in *.pc.in
 
 # For 1.8.2, the Makefile tries to install the JNI stuff even if
 # we don't build it.
-sed -i '/cp *-f .*JNI_TARGET/s,$, || true,' Makefile.in
-
-CFLAGS="$SLKCFLAGS" \
-CXXFLAGS="$SLKCFLAGS" \
-./configure \
+#sed -i '/cp *-f .*JNI_TARGET/s,$, || true,' Makefile.in
+export CFLAGS="$SLKCFLAGS"
+export CXXFLAGS="$SLKCFLAGS"
+mkdir meson-build
+cd meson-build
+meson setup \
   --prefix=/usr \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --build=$ARCH-slackware-linux
+  --libexecdir=/usr/libexec \
+  --bindir=/usr/bin \
+  --sbindir=/usr/sbin \
+  --includedir=/usr/include \
+  --datadir=/usr/share \
+  --mandir=/usr/man \
+  --sysconfdir=/etc \
+  --localstatedir=/var \
+  --buildtype=release \
+  .. || exit 1
+  "${NINJA:=ninja}" $NUMJOBS || exit 1
+  DESTDIR=$PKG $NINJA install || exit 1
+cd ..
 
-make
-
-# 20180703 bkw: build java JNI stuff if we have javac in $PATH and
-# the user says JAVA=yes. Disabled by default because we have too many
-# choices for java compilers, and I can't be bothered to test them all
-# (jdk, openjdk 6 through 8, zulu-openjdk 6 thru 8). Plain "make"
-# doesn't build this...
-
-  make lib$LIBDIRSUFFIX/librubberband-jni.so
-  WITHJAVA=with
-
-make install DESTDIR=$PKG
 
 # We don't need the static lib
 rm -f $PKG/usr/lib$LIBDIRSUFFIX/*.a
@@ -109,7 +110,7 @@ mkdir -p $PKG/usr/man/man1
 gzip -9c < $CWD/$PRGNAM.1 > $PKG/usr/man/man1/$PRGNAM.1.gz
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a CHANGELOG COPYING README.txt $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a CHANGELOG COPYING README.md $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
