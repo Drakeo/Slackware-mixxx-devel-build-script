@@ -23,8 +23,8 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 PRGNAM=pulseaudio
-VERSION=${VERSION:-14.2}
-BUILD=${BUILD:-3}
+VERSION=${VERSION:-15.0}
+BUILD=${BUILD:-1}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -39,19 +39,19 @@ TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
-#wget -c https://mirrors.kernel.org/slackware/slackware64-current/source/l/pulseaudio/pulseaudio-$VERSION.tar.xz
-if [ -f $CWD/$PRGNAM-$VERSION.tar.xz ]; then
- echo $PRGNAM-$VERSION.tar.gz built
-else
-	git clone https://github.com/Drakeo/$PRGNAM.git
-	cd $CWD/$PRGNAM
-	git fetch
-	git checkout $VERSION
-	cd $CWD
-	mv  $PRGNAM  $PRGNAM-$VERSION
-	tar cJvf  $PRGNAM-$VERSION.tar.xz $PRGNAM-$VERSION
-	rm -rf $PRGNAM-$VERSION
-fi
+wget -c https://mirrors.kernel.org/slackware/slackware64-current/source/l/pulseaudio/pulseaudio-$VERSION.tar.xz
+#if [ -f $CWD/$PRGNAM-$VERSION.tar.xz ]; then
+# echo $PRGNAM-$VERSION.tar.gz built
+#else
+#	git clone https://github.com/Drakeo/$PRGNAM.git
+#	cd $CWD/$PRGNAM
+#	git fetch
+#	git checkout $VERSION
+#	cd $CWD
+#	mv  $PRGNAM  $PRGNAM-$VERSION
+#	tar cJvf  $PRGNAM-$VERSION.tar.xz $PRGNAM-$VERSION
+#    rm -rf $PRGNAM-$VERSION
+#fi
 
 if [ "$ARCH" = "i586" ]; then
   SLKCFLAGS="-O2 -march=i586 -mtune=i686"
@@ -83,7 +83,6 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
  -exec chmod 644 {} \+
 
-zcat $CWD/020_no-parallel-make.diff.gz | patch -p0 --verbose || exit 1
 zcat $CWD/030_posix-completion.diff.gz | patch -p0 --verbose || exit 1
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=1234710
@@ -98,9 +97,6 @@ echo "X-MATE-Autostart-Phase=Initialization" >> src/daemon/pulseaudio.desktop.in
 
 # If autospawn isn't working, start-pulseaudio-x11 should start it manually:
 zcat $CWD/pulseaudio-autostart.patch.gz | patch -p1 --verbose || exit 1
-
-# Add support for meson to detect elogind:
-zcat $CWD/pulseaudio.elogind.meson.diff.gz | patch -p1 --verbose || exit 1
 
 # Configure, build, and install:
 export CFLAGS="$SLKCFLAGS"
