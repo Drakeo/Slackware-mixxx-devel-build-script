@@ -31,6 +31,7 @@ pip3 install conan
 
 CWD=$(pwd) ; NPROC=$(nproc)
 
+GITNAM=Audacity
 PRGNAM=audacity
 VERSION=3.0.3
 BUILD=${BUILD:-1}
@@ -45,8 +46,7 @@ if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
 else
 	git clone https://github.com/$PRGNAM/$PRGNAM.git 
 	cd $CWD/$PRGNAM
-	git fetch
-	git checkout $PRGNAM-$VERSION
+	git checkout $GITNAM-$VERSION
 	cd $CWD
 	mv  $PRGNAM  $PRGNAM-$VERSION
 	tar cvf  $PRGNAM-$VERSION.tar.gz $PRGNAM-$VERSION
