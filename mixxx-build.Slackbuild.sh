@@ -94,6 +94,7 @@ for dir in \
   buildmixxx/pulseaudio \
   buildmixxx/alsa-plugins \
   buildmixxx/qjackctl \
+  buildmixxx/audacity \
   buildmixxx/mixxx \
   ; do
   # Get the package name
