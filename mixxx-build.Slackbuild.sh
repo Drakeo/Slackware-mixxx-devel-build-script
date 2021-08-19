@@ -122,10 +122,11 @@ for dir in \
   sh ${package}.SlackBuild || exit 1
   if [ "$INST" = "1" ]; then
     PACKAGE="${package}-$version-*.t?z"
+    PACKTXT="${package}-$version"
     if [ -f $TMP/$PACKAGE ]; then
-      upgradepkg --install-new --reinstall $TMP/$PACKAGE
+#      upgradepkg --install-new --reinstall $TMP/$PACKAGE
 #      cat $MIXXXROOT/$dir/slack-desc |tail -n 11 > $TMP/$PACKTXT-$ARCH-$build.txt
-#      gpg --armor --detach-sign --passphrase $TMP/$PACKAGE
+      gpg --armor --detach-sign --passphrase $TMP/$PACKAGE
     else
       echo "Error:  package to upgrade "$PACKAGE" not found in $TMP"
       exit 1
