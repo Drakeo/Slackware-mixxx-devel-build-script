@@ -105,6 +105,9 @@ for dir in \
 
   # Get the version
   version=$(cat ${package}.SlackBuild | grep "VERSION:" | cut -d "-" -f2 | rev | cut -c 2- | rev)
+  build=$(cat ${package}.SlackBuild | grep "BUILD:" | cut -d "-" -f2 | rev | cut -c 2- | rev)
+  #get arch 
+  ARCH=$(uname -m)
 
   # Check for duplicate sources
   sourcefile="$(ls -l $MIXXXROOT/$dir/${package}-*.tar.?z* | wc -l)"
@@ -121,6 +124,8 @@ for dir in \
     PACKAGE="${package}-$version-*.t?z"
     if [ -f $TMP/$PACKAGE ]; then
       upgradepkg --install-new --reinstall $TMP/$PACKAGE
+#      cat $MIXXXROOT/$dir/slack-desc |tail -n 11 > $TMP/$PACKTXT-$ARCH-$build.txt
+#      gpg --armor --detach-sign --passphrase $TMP/$PACKAGE
     else
       echo "Error:  package to upgrade "$PACKAGE" not found in $TMP"
       exit 1
