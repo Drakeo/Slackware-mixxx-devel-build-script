@@ -34,10 +34,10 @@ CWD=$(pwd) ; NPROC=$(nproc)
 GITNAM=Audacity
 PRGNAM=audacity
 VERSION=${VERSION:-3.0.3}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_drakeo}
 
-TMP=${TMP:-/tmp/mixxx}
+TMP=${TMP:-/tmp/studio}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
@@ -84,6 +84,8 @@ cd $TMP
 rm -rf $PRGNAM-$VERSION
 tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
+cat $CWD/patches/GCC-11.2.0.patch > GCC-11.2.0.patch
+git apply GCC-11.2.0.patch
 
 chown -R root:root .
 chmod -R u+w,go+r-w,a+X-s .
@@ -95,7 +97,8 @@ mkdir -p build
 cd build
 cmake -Wno-dev \
   -DCMAKE_C_FLAGS_RELEASE:STRING="$SLKCFLAGS -DNDEBUG" \
-  -DCMAKE_CXX_FLAGS_RELEASE:STRING="$SLKCFLAGS -std=gnu++11 -DNDEBUG" \
+  -DCMAKE_CXX_FLAGS_RELEASE:STRING="$SLKCFLAGS -std=gnu++14 -DNDEBUG" \
+  -Daudacity_use_ffmpeg=loaded \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=/usr \
   ..
