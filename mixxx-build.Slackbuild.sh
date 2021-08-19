@@ -64,6 +64,7 @@ MIXXXROOT=$(pwd)
 
 # Loop for all packages
 for dir in \
+  buildmixxx/chromaprint \
   buildmixxx/set_rlimits \
   buildmixxx/libebur128 \
   buildmixxx/hidapi \
@@ -82,7 +83,6 @@ for dir in \
   buildmixxx/python-dateutil\
   buildmixxx/jack2 \
   buildmixxx/protobuf \
-  buildmixxx/chromaprint \
   buildmixxx/ladspa_sdk  \
   buildmixxx/libshout \
   buildmixxx/portaudio \
