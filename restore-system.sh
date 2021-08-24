@@ -32,6 +32,7 @@ removepkg sratom
 removepkg vamp-plugin-sdk  
 # reinstall the  default slackware packages.
 slackpkg reinstall alsa-plugins 
-slackpkg reinstall pulseaudio 
+slackpkg reinstall pulseaudio
+slackpkg upgrade pulseaudio  
 
  
