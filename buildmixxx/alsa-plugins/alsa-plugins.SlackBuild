@@ -31,18 +31,11 @@ NUMJOBS=${NUMJOBS:-" -j$(expr $(nproc) + 1) "}
 TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
-if [ -f $CWD/$PRGNAM-$VERSION.tar.gz ]; then
- echo $PRGNAM-$VERSION.tar.gz built
-else
-	git clone http://git.alsa-project.org/http/alsa-plugins.git
-	cd $CWD/$PRGNAM
-	git fetch --all
-	git pull --all
-	git checkout v$VERSION
-	cd $CWD
-	mv  $PRGNAM  $PRGNAM-$VERSION
-	tar cJvf  $PRGNAM-$VERSION.tar.gz $PRGNAM-$VERSION
-	rm -rf $PRGNAM-$VERSION
+
+if [ -f $CWD/$PRGNAM-$VERSION.tar.lz ]; then
+ echo $PRGNAM-$VERSION.tar.lz downloaded
+ else
+wget -c https://mirrors.kernel.org/slackware/slackware64-current/source/l/alsa-plugins/alsa-plugins-1.2.5.tar.lz
 fi
 
 
@@ -128,4 +121,4 @@ mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 
 cd $PKG
-/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.txz
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD.txz

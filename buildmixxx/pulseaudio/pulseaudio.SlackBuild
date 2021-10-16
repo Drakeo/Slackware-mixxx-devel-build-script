@@ -39,7 +39,11 @@ TMP=${TMP:-/tmp/mixxx}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp/mixxx/pkgs}
 
+if [ -f $CWD/$PRGNAM-$VERSION.tar.xz ]; then
+ echo $PRGNAM-$VERSION.tar.gz downloaded
+ else
 wget -c https://mirrors.kernel.org/slackware/slackware64-current/source/l/pulseaudio/pulseaudio-$VERSION.tar.xz
+fi
 #if [ -f $CWD/$PRGNAM-$VERSION.tar.xz ]; then
 # echo $PRGNAM-$VERSION.tar.gz built
 #else
