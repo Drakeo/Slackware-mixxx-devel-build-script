@@ -1,5 +1,4 @@
 #!/bin/bash
-removepkg audacity
 removepkg chromaprint
 removepkg faad2
 removepkg google-apputils
@@ -33,6 +32,7 @@ removepkg vamp-plugin-sdk
 # reinstall the  default slackware packages.
 slackpkg reinstall alsa-plugins 
 slackpkg reinstall pulseaudio
-slackpkg upgrade pulseaudio  
+slackpkg upgrade pulseaudio
+slackpkg upgrade alsa-plugins  
 
  
