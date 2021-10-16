@@ -115,7 +115,8 @@ find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 mkdir -p $PKG/etc
-mv $PKG/usr/share/mixxx/udev $PKG/etc/udev
+mv $PKG/lib/udev $PKG/etc/udev
+rm -rf  $PKG/lib
 mv $PKG/usr/share/doc/mixxx $PKG/usr/share/doc/$PRGNAM-$VERSION
 mv $PKG/usr/share/doc $PKG/usr/
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
@@ -129,6 +130,6 @@ cat $CWD/doinst.sh > $PKG/install/doinst.sh
   
 cd $PKG
 #uncoment for development builds
-#/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION$GITREV-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+#/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION$GITREV-$ARCH-$BUILD$TAG.${PKGTYPE:-txz}
 #comment out for devel builds
-/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-txz}
